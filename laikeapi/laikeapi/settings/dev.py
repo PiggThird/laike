@@ -9,11 +9,17 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# print(BASE_DIR / "apps", type(BASE_DIR / "apps"))    # D:\laike\laikeapi\laikeapi\apps <class 'pathlib.WindowsPath'>
+
+# print(sys.path)  # ['D:\\laike\\laikeapi',...]
+# sys.path.insert(0, "laikeapi/apps")
+sys.path.insert(0, str(BASE_DIR / "apps"))  # 只有转成字符串类型才能插入进去
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -24,7 +30,7 @@ SECRET_KEY = 'django-insecure-h%=b0+ct=wwu11e63gu&k9!v3wu-4ax+*#o5^(^!dqkm%c^l%3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -35,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -86,12 +94,51 @@ DATABASES = {
         'OPTIONS': {
             'charset': 'utf8mb4',  # 连接选项配置,mysql8.0以上无需配置
         },
-        'POOL_OPTIONS': {       # 连接池的配置信息
-            'POOL_SIZE': 10,    # 连接池默认创建的链接对象的数量
+        'POOL_OPTIONS': {  # 连接池的配置信息
+            'POOL_SIZE': 10,  # 连接池默认创建的链接对象的数量
             'MAX_OVERFLOW': 10  # 连接池默认创建的链接对象的最大数量
         }
     }
 }
+
+# redis configration
+# 设置redis缓存
+CACHES = {
+    # 默认缓存
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        # 项目上线时,需要调整这里的路径
+        # "LOCATION": "redis://:密码@IP地址:端口/库编号",
+        "LOCATION": "redis://:@127.0.0.1:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 10},  # 连接池
+        }
+    },
+    # 提供给admin运营站点的session存储
+    "session": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://:@127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 10},
+        }
+    },
+    # 提供存储短信验证码
+    "sms_code": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://:@127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {"max_connections": 10},
+        }
+    }
+}
+
+# 设置用户登录admin站点时,记录登录状态的session保存到redis缓存中
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# 设置session保存的位置对应的缓存配置项
+SESSION_CACHE_ALIAS = "session"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
