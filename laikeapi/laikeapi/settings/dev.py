@@ -67,7 +67,20 @@ MIDDLEWARE = [
 # CORS_ALLOW_CREDENTIALS = False  # 不允许ajax跨域请求时携带cookie
 
 # 方案2：
-CORS_ALLOW_ALL_ORIGINS = True   # 允许所有 跨域发送axios
+CORS_ORIGIN_ALLOW_ALL = True   # 允许所有 跨域发送axios
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+    'VIEW',
+)
+CORS_ALLOW_HEADERS = (
+    'authorization',    # 允许JWT
+    'content-type',		# 允许非简单请求
+)
 
 ROOT_URLCONF = 'laikeapi.urls'
 
