@@ -1,17 +1,18 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from django_redis import get_redis_connection
-from django.http import HttpResponse
+import constants
+from rest_framework.generics import ListAPIView
+from .models import Nav
+from .serializers import NavModelSerializer
 
 
-# Create your views here.
-class HomeAPIView(APIView):
-    def get(self, request):
-        redis = get_redis_connection("sms_code")
-        brother = redis.lrange("brother", 0, -1)
-        return Response(brother, status.HTTP_200_OK)
+class NavHeaderListAPIView(ListAPIView):
+    """顶部导航视图"""
+    queryset = Nav.objects.filter(position=constants.NAV_HEADER_POSITION, is_show=True, is_deleted=False).order_by(
+        "orders", "-id")[:constants.NAV_HEADER_SIZE]
+    serializer_class = NavModelSerializer
 
 
-def login(request):
-    return HttpResponse('ok')
+class NavFooterListAPIView(ListAPIView):
+    """脚部导航视图"""
+    queryset = Nav.objects.filter(position=constants.NAV_FOOTER_POSITION, is_show=True, is_deleted=False).order_by(
+        "orders", "-id")[:constants.NAV_FOOTER_SIZE]
+    serializer_class = NavModelSerializer

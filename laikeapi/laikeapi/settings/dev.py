@@ -19,6 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # print(sys.path)  # ['D:\\laike\\laikeapi',...]
 # sys.path.insert(0, "laikeapi/apps")
 sys.path.insert(0, str(BASE_DIR / "apps"))  # 只有转成字符串类型才能插入进去
+sys.path.insert(0, str(BASE_DIR / "utils"))
 
 
 # Quick-start development settings - unsuitable for production
