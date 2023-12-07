@@ -48,7 +48,7 @@
             </div>
           </a>
           <a href="" target="_blank" title="前端框架及项目面试 聚焦Vue3/React/Webpack" class="recomment-item">
-            <div class="img" style="background-image: url('/src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>
+<!--            <div class="img" style="background-image: url('/src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>-->
             <div class="img" style="background-image: image('src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>
             <div class="details">
               <!--路径单独写-->
@@ -197,7 +197,23 @@
           </div>
           <div class="lore">
             <span class="title">知识点：</span>
-            <p class="lores clearfix"></p>
+            <p class="lores clearfix">
+              <a target="_blank" href="">Java</a>
+              <a target="_blank" href="">SpringBoot</a>
+              <a target="_blank" href="">Spring Cloud</a>
+              <a target="_blank" href="">SSM</a>
+              <a target="_blank" href="">PHP</a>
+              <a target="_blank" href="">.net</a>
+              <a target="_blank" href="">Python</a>
+              <a target="_blank" href="">爬虫</a>
+              <a target="_blank" href="">Django</a>
+              <a target="_blank" href="">Flask</a>
+              <a target="_blank" href="">Tornado</a>
+              <a target="_blank" href="">Go</a>
+              <a target="_blank" href="">C</a>
+              <a target="_blank" href="">C++</a>
+              <a target="_blank" href="">C#</a>
+              <a target="_blank" href="">Ruby</a></p>
           </div>
         </div>
         <div class="recomment clearfix">
