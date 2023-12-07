@@ -7,8 +7,8 @@
         </div>
         <ul class="nav">
           <li v-for="nav in nav.header_nav_list">
-            <a :href="nav.link" v-if="nav.is_http">{{nav.name}}</a>
-            <router-link :to="nav.link" v-else>{{nav.name}}</router-link>
+            <a :href="nav.link" v-if="nav.is_http">{{ nav.name }}</a>
+            <router-link :to="nav.link" v-else>{{ nav.name }}</router-link>
           </li>
         </ul>
         <div class="search-warp">
@@ -27,7 +27,7 @@
             <span><router-link to="/cart">购物车</router-link></span>
           </div>
           <div class="login-box full-left">
-            <span>登录</span>
+            <span @click="state.show_login=true">登录</span>
             &nbsp;/&nbsp;
             <span>注册</span>
           </div>
@@ -35,14 +35,23 @@
       </div>
     </div>
   </div>
+  <el-dialog :width="600" v-model="state.show_login">
+    <Login></Login>
+  </el-dialog>
 </template>
 
 
 <script setup>
 import nav from "@/api/nav";
+import Login from './Login.vue'
+import {reactive} from "vue";
 
-nav.get_header_nav().then(response=>{
+nav.get_header_nav().then(response => {
   nav.header_nav_list = response.data
+})
+
+const state = reactive({
+  show_login: false,
 })
 
 </script>

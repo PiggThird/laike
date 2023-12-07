@@ -19,7 +19,8 @@ const routes = [
         path: '/login',      // uri访问地址
         name: "Login",
         component: () => import("../views/Login.vue")
-    }
+    },
+
 ]
 
 // 路由对象实例化
