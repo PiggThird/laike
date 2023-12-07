@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "element-plus": "^2.4.3",
+    "unplugin-vue-components": "^0.26.0",
     "vue": "^3.2.13",
     "vue-router": "^4.2.5"
   },
