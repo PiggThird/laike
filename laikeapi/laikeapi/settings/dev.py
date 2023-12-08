@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',  # cors跨域子应用
 
     'home',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -283,3 +284,7 @@ REST_FRAMEWORK = {
     # 自定义异常处理
     'EXCEPTION_HANDLER': 'laikeapi.utils.exceptions.custom_exception_handler',
 }
+
+# 告诉django，系统认证相关的功能，采用我们自定义的用户模型，格式：
+# AUTH_USER_MODEL = "子应用目录名.模型类"
+AUTH_USER_MODEL = 'users.User'
