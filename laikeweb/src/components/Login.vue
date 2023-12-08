@@ -29,6 +29,7 @@
 <script setup>
 import user from '../api/user'
 import {ElMessage} from "element-plus";
+const emit = defineEmits(["successhandle",])
 
 const loginhandler = ()=>{
   // 验证数据
@@ -51,6 +52,13 @@ const loginhandler = ()=>{
       sessionStorage.token = response.data.token
     }
     ElMessage.success("登录成功！")
+    // 登陆成功后关闭登录弹窗，对外发送一个登录成功的信息
+    user.username = ""
+    user.password = ""
+    user.mobile = ""
+    user.code = ""
+    user.remember = false
+    emit("successhandle")
   }).catch(error=>{
     ElMessage.error("登录失败！")
   })
