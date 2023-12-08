@@ -39,6 +39,17 @@ const loginhandler = ()=>{
   }
 
   user.login().then(response=>{
+    // 每次先删除之前存留的状态
+    localStorage.removeItem("token")
+    sessionStorage.removeItem("token")
+    // 根据用户的选择是否记住密码 来保存token到不同的本地存储中
+    if(user.remember){
+      // 记录登录状态
+      localStorage.token = response.data.token
+    }else {
+      // 不记住登陆状态 关闭浏览器以后就删除登陆状态
+      sessionStorage.token = response.data.token
+    }
     ElMessage.success("登录成功！")
   }).catch(error=>{
     ElMessage.error("登录失败！")
