@@ -22,27 +22,27 @@
           <div class="showhide-search" data-show="no"><img class="imv2-search2" src="../assets/search.svg"/></div>
         </div>
         <div class="login-bar logined-bar" v-if="store.state.user.user_id">
-            <div class="shop-cart ">
-              <img src="../assets/cart.svg" alt="" />
-              <span><router-link to="/cart">购物车</router-link></span>
-            </div>
-            <div class="login-box ">
-              <router-link to="">我的课堂</router-link>
-              <el-dropdown>
+          <div class="shop-cart ">
+            <img src="../assets/cart.svg" alt=""/>
+            <span><router-link to="/cart">购物车</router-link></span>
+          </div>
+          <div class="login-box ">
+            <router-link to="">我的课堂</router-link>
+            <el-dropdown>
                 <span class="el-dropdown-link">
                   <el-avatar class="avatar" size="50" src="./src/assets/avatar.jpg"></el-avatar>
                 </span>
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item :icon="UserFilled">学习中心</el-dropdown-item>
-                    <el-dropdown-item :icon="List">订单列表</el-dropdown-item>
-                    <el-dropdown-item :icon="Setting">个人设置</el-dropdown-item>
-                    <el-dropdown-item :icon="Position">注销登录</el-dropdown-item>
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </div>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item :icon="UserFilled">学习中心</el-dropdown-item>
+                  <el-dropdown-item :icon="List">订单列表</el-dropdown-item>
+                  <el-dropdown-item :icon="Setting">个人设置</el-dropdown-item>
+                  <el-dropdown-item :icon="Position" @click="logout">注销登录</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
           </div>
+        </div>
         <div class="login-bar" v-else>
           <div class="shop-cart full-left">
             <img src="../assets/cart.svg" alt=""/>
@@ -64,12 +64,13 @@
 
 
 <script setup>
-import {UserFilled, List, Setting, Position} from '@element-plus/icons-vue'
+import {List, Position, Setting, UserFilled} from '@element-plus/icons-vue'
 import nav from "@/api/nav";
 import Login from './Login.vue'
 import {reactive} from "vue";
 
 import {useStore} from "vuex"
+
 const store = useStore()
 
 nav.get_header_nav().then(response => {
@@ -84,6 +85,11 @@ const state = reactive({
 // 用户登陆成功之后
 const login_success = () => {
   state.show_login = false
+}
+
+// 登录注销的处理
+const logout = () => {
+  store.commit("logout");
 }
 
 </script>
