@@ -21,7 +21,29 @@
           </div>
           <div class="showhide-search" data-show="no"><img class="imv2-search2" src="../assets/search.svg"/></div>
         </div>
-        <div class="login-bar">
+        <div class="login-bar logined-bar" v-if="store.state.user.user_id">
+            <div class="shop-cart ">
+              <img src="../assets/cart.svg" alt="" />
+              <span><router-link to="/cart">购物车</router-link></span>
+            </div>
+            <div class="login-box ">
+              <router-link to="">我的课堂</router-link>
+              <el-dropdown>
+                <span class="el-dropdown-link">
+                  <el-avatar class="avatar" size="50" src="./src/assets/avatar.jpg"></el-avatar>
+                </span>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item :icon="UserFilled">学习中心</el-dropdown-item>
+                    <el-dropdown-item :icon="List">订单列表</el-dropdown-item>
+                    <el-dropdown-item :icon="Setting">个人设置</el-dropdown-item>
+                    <el-dropdown-item :icon="Position">注销登录</el-dropdown-item>
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
+            </div>
+          </div>
+        <div class="login-bar" v-else>
           <div class="shop-cart full-left">
             <img src="../assets/cart.svg" alt=""/>
             <span><router-link to="/cart">购物车</router-link></span>
@@ -42,9 +64,13 @@
 
 
 <script setup>
+import {UserFilled, List, Setting, Position} from '@element-plus/icons-vue'
 import nav from "@/api/nav";
 import Login from './Login.vue'
 import {reactive} from "vue";
+
+import {useStore} from "vuex"
+const store = useStore()
 
 nav.get_header_nav().then(response => {
   nav.header_nav_list = response.data
@@ -52,10 +78,11 @@ nav.get_header_nav().then(response => {
 
 const state = reactive({
   show_login: false,
+  is_login: false  // 登录状态
 })
 
 // 用户登陆成功之后
-const login_success = ()=>{
+const login_success = () => {
   state.show_login = false
 }
 
@@ -380,5 +407,37 @@ const login_success = ()=>{
 
 .header .login-bar .login-box span:hover {
   color: #000000;
+}
+
+/* 登陆后状态栏 */
+.logined-bar {
+  margin-top: 0;
+  height: 72px;
+  line-height: 72px;
+}
+
+.header .logined-bar .shop-cart {
+  height: 32px;
+  line-height: 32px;
+}
+
+.logined-bar .login-box {
+  height: 72px;
+  line-height: 72px;
+  position: relative;
+}
+
+.logined-bar .el-avatar {
+  float: right;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  transition: transform .5s ease-in .1s;
+}
+
+.logined-bar .el-avatar:hover {
+  transform: scale(1.3);
 }
 </style>

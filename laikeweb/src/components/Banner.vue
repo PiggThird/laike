@@ -48,7 +48,7 @@
             </div>
           </a>
           <a href="" target="_blank" title="前端框架及项目面试 聚焦Vue3/React/Webpack" class="recomment-item">
-<!--            <div class="img" style="background-image: url('/src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>-->
+            <!--            <div class="img" style="background-image: url('/src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>-->
             <div class="img" style="background-image: image('src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>
             <div class="details">
               <!--路径单独写-->

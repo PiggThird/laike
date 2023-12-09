@@ -30,8 +30,10 @@
 import user from '../api/user'
 import {ElMessage} from "element-plus";
 
-
 const emit = defineEmits(["successhandle",])
+
+import {useStore} from "vuex"
+const store = useStore()
 
 const loginhandler = ()=>{
   // 验证数据
@@ -53,7 +55,14 @@ const loginhandler = ()=>{
       // 不记住登陆状态 关闭浏览器以后就删除登陆状态
       sessionStorage.token = response.data.token
     }
-    console.log(response.data.token)
+
+    // vuex存储用户登录信息，保存token，并根据用户的选择，是否记住密码
+    let payload = response.data.token.split(".")[1]  // 载荷
+    let payload_data = JSON.parse(atob(payload))              // 用户信息
+    console.log(payload_data)
+    store.commit("login", payload_data)
+
+    // 登录成功提示
     ElMessage.success("登录成功！")
     // 登陆成功后关闭登录弹窗，对外发送一个登录成功的信息
     user.username = ""
