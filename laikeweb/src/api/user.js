@@ -10,7 +10,7 @@ const user = reactive({
     code:"",            // 短信验证码
     login(){
         // 用户登录
-        return http.post("/users/login",{
+        return http.post("/users/login/",{
             "username": this.username,
             "password": this.password
         })

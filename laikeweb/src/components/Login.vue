@@ -53,6 +53,7 @@ const loginhandler = ()=>{
       // 不记住登陆状态 关闭浏览器以后就删除登陆状态
       sessionStorage.token = response.data.token
     }
+    console.log(response.data.token)
     ElMessage.success("登录成功！")
     // 登陆成功后关闭登录弹窗，对外发送一个登录成功的信息
     user.username = ""
