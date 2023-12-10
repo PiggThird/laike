@@ -60,7 +60,7 @@ class SendSmSView(APIView):
         interval = redis.ttl(f"interval_{mobile}")  # 通过ttl方法可以获取保存在redis中的变量的剩余有效期
         if interval != -2:
             return Response(
-                {"errmsg": f"短信发送过于频繁，请{interval}秒后再次点击获取!"},
+                {"errmsg": f"短信发送过于频繁，请{interval}秒后再次点击获取!", "interval": interval},
                 status=status.HTTP_400_BAD_REQUEST
             )
         code = get_code()
