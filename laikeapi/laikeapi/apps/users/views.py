@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from .serializers import UserSerializer, UserRegisterModelSerializer
+from .serializers import UserSerializer, UserRegisterModelSerializer, CodeUserSerializer
 from rest_framework.decorators import action
 from .models import User
 from rest_framework import status
@@ -21,6 +21,16 @@ class LoginView(ViewSet):
         else:
             return Response({'code': 1, 'msg': ser.errors})
 
+    @action(methods=['POST'], detail=False)
+    def code_login(self, request, *args, **kwargs):
+        ser = CodeUserSerializer(data=request.data)
+        if ser.is_valid():
+            token = ser.context['token']
+            username = ser.context['user'].username
+            return Response({"token": token, "username": username})
+        else:
+            return Response({"code": 0, "msg": ser.errors})
+
 
 class MobileView(APIView):
     def get(self, request, mobile):
@@ -38,7 +48,8 @@ class MobileView(APIView):
             return Response({"errmsg": "手机号未注册，欢迎注册！"}, status=status.HTTP_200_OK)
 
 
-class UserAPIView(CreateAPIView):
+class UserRegAPIView(CreateAPIView):
+    """用户注册接口"""
     queryset = User.objects.all()
     serializer_class = UserRegisterModelSerializer
 

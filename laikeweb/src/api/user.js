@@ -20,6 +20,13 @@ const user = reactive({
             "password": this.password
         })
     },
+    login_sms(){
+        // 用户登录
+        return http.post("/users/code_login/",{
+            "mobile": this.mobile,
+            "code": this.code
+        })
+    },
     check_mobile(){
         // 验证手机号
         return http.get(`/users/mobile/${this.mobile}/`)

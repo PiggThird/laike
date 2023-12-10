@@ -11,7 +11,7 @@ urlpatterns = [
     # path('login', obtain_jwt_token, name='login'),
     path('', include(router.urls)),
     re_path(r'^mobile/(?P<mobile>1[3-9]\d{9})/$', views.MobileView.as_view()),
-    path('register/', views.UserAPIView.as_view()),
+    path('register/', views.UserRegAPIView.as_view()),
     re_path(r"^sms/(?P<mobile>1[3-9]\d{9})/$", views.SendSmSView.as_view()),
 
 ]

@@ -2,18 +2,18 @@
   <div class="footer">
     <ul>
       <li v-for="nav in nav.footer_nav_list">
-        <a :href="nav.link" v-if="nav.is_http">{{nav.name}}</a>
-        <router-link :to="nav.link" v-else>{{nav.name}}</router-link>
+        <a :href="nav.link" v-if="nav.is_http">{{ nav.name }}</a>
+        <router-link :to="nav.link" v-else>{{ nav.name }}</router-link>
       </li>
     </ul>
-    <p>Copyright © laike.com版权所有 | 京ICP备88888888号-1</p>
+    <p>Copyright © Laike.com版权所有 | 京ICP备88888888号-1</p>
   </div>
 </template>
 
 <script setup>
 import nav from "@/api/nav";
 
-nav.get_footer_nav().then(response=>{
+nav.get_footer_nav().then(response => {
   nav.footer_nav_list = response.data
 })
 
@@ -24,6 +24,7 @@ nav.get_footer_nav().then(response=>{
   width: 100%;
   height: 128px;
   color: #545C63;
+  background: #25292e;
 }
 
 .footer ul {
@@ -38,6 +39,12 @@ nav.get_footer_nav().then(response=>{
   margin: 0 10px;
   text-align: center;
   font-size: 14px;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
 }
 
 .footer ul::after {

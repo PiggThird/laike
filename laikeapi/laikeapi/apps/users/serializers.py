@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import User
 from rest_framework.exceptions import ValidationError
 from laikeapi.utils import constants
+from django_redis import get_redis_connection
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -50,6 +51,46 @@ class UserSerializer(serializers.ModelSerializer):
         return token
 
 
+class CodeUserSerializer(serializers.ModelSerializer):
+    code = serializers.CharField()
+    mobile = serializers.CharField(max_length=11, min_length=11)
+
+    class Meta:
+        model = User
+        fields = ['mobile', 'code']
+
+    def validate(self, attrs):
+        user = self._get_user(attrs)
+        token = self._get_token(user)
+        self.context['token'] = token
+        self.context['user'] = user
+        return attrs
+
+    def _get_user(self, attrs):
+        mobile = attrs.get('mobile')
+        code = attrs.get('code')
+
+        # 取出原来的code
+        redis = get_redis_connection('sms_code')
+        cache_code = redis.get(f'sms_{mobile}').decode()
+
+        if code == cache_code:
+            # 验证码通过
+            user = User.objects.filter(mobile=mobile).first()
+            # 把使用过的验证码清空
+            redis.delete(f"sms_{mobile}")
+            return user
+        else:
+            raise serializers.ValidationError('验证码错误')
+
+    def _get_token(self, user):
+        from rest_framework_jwt.serializers import jwt_encode_handler
+        from laikeapi.utils.authenticate import jwt_payload_handler
+        payload = jwt_payload_handler(user)  # 通过user对象获得payload
+        token = jwt_encode_handler(payload)  # 通过payload获得token
+        return token
+
+
 class UserRegisterModelSerializer(serializers.ModelSerializer):
     """
     用户注册的序列化器
@@ -87,7 +128,18 @@ class UserRegisterModelSerializer(serializers.ModelSerializer):
         except User.DoesNotExist:
             pass
 
-        # todo 验证短信验证码
+        # 验证短信验证码
+        redis = get_redis_connection('sms_code')
+        code = redis.get(f'sms_{mobile}')
+        if code is None:
+            """获取不到验证码，则表示验证码已经过期了"""
+            raise serializers.ValidationError(detail="验证码失效或已过期!", code="sms_code")
+
+        # 从redis提取的数据，字符串都是bytes类型，所以decode
+        if code.decode() != data.get("sms_code"):
+            raise serializers.ValidationError(detail="短信验证码错误！", code="sms_code")
+        # 删除掉redis中的短信，后续不管用户是否注册成功，至少当前这条短信验证码已经没有用处了
+        redis.delete(f"sms_{mobile}")
 
         return data
 
