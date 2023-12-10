@@ -9,3 +9,6 @@ NAV_HEADER_SIZE = 5
 NAV_FOOTER_SIZE = 10
 # 轮播广告显示的最大数量
 BANNER_SIZE = 10
+
+# 默认头像  手动在uploads下创建avatar/2023/并把客户端的头像保存到该目录下。
+DEFAULT_USER_AVATAR = "avatar/2023/avatar.jpg"

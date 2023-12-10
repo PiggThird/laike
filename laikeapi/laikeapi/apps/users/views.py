@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserRegisterModelSerializer
 from rest_framework.decorators import action
 from .models import User
 from rest_framework import status
@@ -34,3 +35,8 @@ class MobileView(APIView):
         except User.DoesNotExist:
             # 如果查不到该手机号的注册记录，则证明手机号可以注册使用
             return Response({"errmsg": "手机号未注册，欢迎注册！"}, status=status.HTTP_200_OK)
+
+
+class UserAPIView(CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRegisterModelSerializer
