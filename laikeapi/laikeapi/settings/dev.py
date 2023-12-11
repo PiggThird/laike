@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',  # cors跨域子应用
     'ckeditor',   # 富文本编辑器
+    'stdimage',  # 生成缩略图
 
     'home',
     'users',
@@ -371,3 +372,20 @@ CKEDITOR_CONFIGS = {
         'height': 120,
     },
 }
+
+# simpleUI-admin站点公共配置
+from django.contrib import admin
+admin.AdminSite.site_header = '来课学城后台管理'
+admin.AdminSite.site_title = '来课学城站点管理'
+# 登录界面logo
+SIMPLEUI_LOGO = '/uploads/logo.png'
+# 快速操作
+SIMPLEUI_HOME_QUICK = True
+# 服务器信息
+SIMPLEUI_HOME_INFO = False
+# 关闭simpleui内置的使用分析
+SIMPLEUI_ANALYSIS = False
+# 离线模式
+SIMPLEUI_STATIC_OFFLINE = True
+# 首页图标地址
+SIMPLEUI_INDEX = 'http://www.laikecity.cn:8080/'

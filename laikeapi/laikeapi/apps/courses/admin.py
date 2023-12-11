@@ -6,7 +6,7 @@ from .models import CourseDirection, CourseCategory, Course, Teacher, CourseChap
 class CourseCategoryInLine(admin.StackedInline):
     """课程分类的内嵌类"""
     model = CourseCategory
-    fields = ["id","name","orders"]
+    fields = ["id", "name", "orders"]
 
 
 class CourseDirectionModelAdmin(admin.ModelAdmin):
@@ -72,7 +72,8 @@ admin.site.register(CourseCategory, CourseCategoryModelAdmin)
 
 class CourseModelAdmin(admin.ModelAdmin):
     """课程信息的模型管理器"""
-    list_display = ["id", "name", 'course_cover', "course_type", "level", "pub_date", "students", "lessons", "price"]
+    list_display = ["id", "name", 'course_cover_small', "course_type", "level", "pub_date", "students", "lessons",
+                    "price"]
     # 分页配置，一页数据量
     list_per_page = 10
 
@@ -82,7 +83,7 @@ admin.site.register(Course, CourseModelAdmin)
 
 class TeacherModelAdmin(admin.ModelAdmin):
     """讲师信息的模型管理器"""
-    list_display = ["id", "name", "avatar", "title", "role", "signature"]
+    list_display = ["id", "name", "avatar_small", "title", "role", "signature"]
     # 分页配置，一页数据量
     list_per_page = 10
     # 搜索字段
