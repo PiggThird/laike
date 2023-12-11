@@ -30,11 +30,8 @@ SECRET_KEY = 'django-insecure-h%=b0+ct=wwu11e63gu&k9!v3wu-4ax+*#o5^(^!dqkm%c^l%3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = []
-=======
 ALLOWED_HOSTS = ['*']
->>>>>>> feature/user
+
 
 # Application definition
 
@@ -133,8 +130,7 @@ DATABASES = {
     }
 }
 
-<<<<<<< HEAD
-=======
+
 # redis configration
 # 设置redis缓存
 CACHES = {
@@ -174,7 +170,7 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # 设置session保存的位置对应的缓存配置项
 SESSION_CACHE_ALIAS = "session"
 
->>>>>>> feature/user
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -204,11 +200,9 @@ USE_I18N = True
 
 USE_L10N = True
 
-<<<<<<< HEAD
-USE_TZ = True
-=======
+
 USE_TZ = False
->>>>>>> feature/user
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -230,11 +224,8 @@ MEDIA_URL = "/uploads/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
+
 # 日志配置
-=======
-# 日志
->>>>>>> feature/user
 LOGGING = {
     'version': 1,  # 使用的日志模块的版本，目前官方提供的只有版本1，但是官方有可能会升级，为了避免升级出现的版本问题，所以这里固定为1
     'disable_existing_loggers': False,  # 是否禁用其他的已经存在的日志功能？肯定不能，有可能有些第三方模块在调用，所以禁用了以后，第三方模块无法捕获自身出现的异常了。
@@ -292,8 +283,6 @@ LOGGING = {
         },
     }
 }
-<<<<<<< HEAD
-=======
 
 # drf配置
 REST_FRAMEWORK = {
@@ -357,4 +346,4 @@ CELERY_BEAT_SCHEDULE = {
         # "schedule": crontab(hour=7, minute=30, day_of_week=1),,  # 定时任务的调用时间，每周一早上7点30分调用一次add任务
     }
 }
->>>>>>> feature/user
+
