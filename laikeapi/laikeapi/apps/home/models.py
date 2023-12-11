@@ -1,5 +1,6 @@
 # from luffycityapi.utils.models import models, BaseModel 将utils标记为资源文件也添加到环境变量就可以简写下面的方式
 from models import BaseModel, models
+from django.utils.safestring import mark_safe
 
 
 # Create your models here.
@@ -34,3 +35,13 @@ class Banner(BaseModel):
         db_table = "lk_banner"
         verbose_name = "轮播广告"
         verbose_name_plural = verbose_name
+
+    def image_html(self):
+        if self.image:
+            return mark_safe(
+                f'<img style="border-radius: 0%;max-height: 100px; max-width: 400px;" src="{self.image.url}">')
+        return ""
+
+    image_html.short_description = "广告图片"
+    image_html.allow_tags = True
+    image_html.admin_order_field = "image"
