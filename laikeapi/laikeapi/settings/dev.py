@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',     # admin界面美化,必须写在admin上面
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',  # cors跨域子应用
+    'ckeditor',   # 富文本编辑器
 
     'home',
     'users',
@@ -122,8 +124,7 @@ DATABASES = {
         'USER': 'laike_user',
         'PASSWORD': 'laike',
         'OPTIONS': {
-            'charset': 'utf8',  # 连接选项配置,mysql8.0以上无需配置
-            'init_command': "SET collation_connection = utf8_unicode_ci",  # 适当调整排序规则
+            'charset': 'utf8mb4',  # 连接选项配置,mysql8.0以上无需配置
         },
         'POOL_OPTIONS': {  # 连接池的配置信息
             'POOL_SIZE': 10,  # 连接池默认创建的链接对象的数量
@@ -349,3 +350,24 @@ CELERY_BEAT_SCHEDULE = {
     }
 }
 
+# 富文本编辑器配置
+# 上传文件的存储路径
+CKEDITOR_UPLOAD_PATH = "ckeditor/"
+
+# 工具条配置
+CKEDITOR_CONFIGS = {
+    'default': {
+        # 'toolbar': 'full', # full 显示全部工具
+        # 'toolbar': 'Basic', # Basic 显示基本工具
+        'toolbar': 'Custom',  # 自定义工具条的显示数量
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Image', 'Styles', 'Format', 'Font', 'Fontsize'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
+             'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Table'],
+            ['RemoveFormat', 'Source']
+        ],
+        # 设置编辑器的高度
+        'height': 120,
+    },
+}
