@@ -52,9 +52,14 @@
       <div class="main-wrap">
         <div class="filter clearfix">
           <div class="sort l">
-            <a href="" class="on">最新</a>
-            <a href="">销量</a>
-            <a href="">升级</a>
+            <div class="sort l">
+              <a href="" :class="{on:course.ordering==='-id'}"
+                 @click.prevent.stop="course.ordering=(course.ordering==='-id'?'':'-id')">最新</a>
+              <a href="" :class="{on:course.ordering==='-students'}"
+                 @click.prevent.stop="course.ordering=(course.ordering==='-students'?'':'-students')">销量</a>
+              <a href="" :class="{on:course.ordering==='-orders'}"
+                 @click.prevent.stop="course.ordering=(course.ordering==='-orders'?'':'-orders')">推荐</a>
+            </div>
           </div>
           <div class="other r clearfix"><a class="course-line l" href="" target="_blank">学习路线</a></div>
         </div>
@@ -88,15 +93,19 @@
             </a>
           </li>
         </ul>
-        <div class="page">
-          <span class="disabled_page">首页</span>
-          <span class="disabled_page">上一页</span>
-          <a href="" class="active">1</a>
-          <a href="">2</a>
-          <a href="">3</a>
-          <a href="">4</a>
-          <a href="">下一页</a>
-          <a href="">尾页</a>
+        <div class="page" v-if="course.count > course.size">
+          <a href="" v-if="course.has_perv" @click.prevent.stop="course.page=1">首页</a>
+          <span v-else>首页</span>
+          <a href="" v-if="course.has_perv" @click.prevent.stop="course.page--">上一页</a>
+          <span v-else>上一页</span>
+          <a href="" v-if="course.has_perv" @click.prevent.stop="course.page--">{{ course.page - 1 }}</a>
+          <a class="active">{{ course.page }}</a>
+          <a href="" v-if="course.has_next" @click.prevent.stop="course.page++">{{ course.page + 1 }}</a>
+          <a href="" v-if="course.has_next" @click.prevent.stop="course.page++">下一页</a>
+          <span v-else>下一页</span>
+          <a href="" v-if="course.has_next"
+             @click.prevent.stop="course.page=Math.ceil(course.count/course.size)">尾页</a>
+          <span v-else>尾页</span>
         </div>
       </div>
     </div>
@@ -128,7 +137,13 @@ get_category();
 const get_course_list = () => {
   // 获取课程列表
   course.get_course_list().then(response => {
-    course.course_list = response.data;
+    course.course_list = response.data.results;
+    // 总数据量
+    course.count = response.data.count;
+    course.has_perv = !!response.data.previous; // !!2个非表示把数据转换成布尔值
+    course.has_next = !!response.data.next;
+    // 优惠活动的倒计时
+    course.start_timer();
   })
 }
 
@@ -139,6 +154,8 @@ watch(
     // 监听当前学习方向，在改变时，更新对应方向下的课程分类与课程信息
     () => course.current_direction,
     () => {
+      // 重置排序条件
+      course.ordering = "-id";
       // 重置当前选中的课程分类
       course.current_category = 0;
       get_category();
@@ -150,7 +167,26 @@ watch(
     // 监听切换不同的课程分类，在改变时，更新对应分类下的课程信息
     () => course.current_category,
     () => {
+      // 重置排序条件
+      course.ordering = "-id";
       get_course_list();
+    }
+)
+
+watch(
+    // 监听课程切换不同的排序条件
+    () => course.ordering,
+    () => {
+      get_course_list();
+    }
+)
+
+// 监听页码
+watch(
+    ()=>course.page,
+    ()=>{
+        // 重新获取课程信息
+        get_course_list();
     }
 )
 
