@@ -29,37 +29,20 @@
           <div class="one warp">
             <span class="name">方向：</span>
             <ul class="items">
-              <li class="cur"><a href="">全部</a></li>
-              <li><a href="">前端开发</a></li>
-              <li><a href="">后端开发</a></li>
-              <li><a href="">移动开发</a></li>
-              <li><a href="">计算机基础</a></li>
-              <li><a href="">前沿技术</a></li>
-              <li><a href="">云计算&amp;大数据</a></li>
-              <li><a href="">运维&amp;测试</a></li>
-              <li><a href="">数据库</a></li>
-              <li><a href="">UI设计&amp;多媒体</a></li>
-              <li><a href="">游戏</a></li>
-              <li><a href="">求职面试</a></li>
+              <li :class="{cur:course.current_direction===0}" @click.prevent.stop="course.current_direction=0"><a
+                  href="">全部</a></li>
+              <li :class="{cur:course.current_direction===direction.id}"
+                  @click.prevent.stop="course.current_direction=direction.id"
+                  v-for="direction in course.direction_list"><a href="">{{ direction.name }}</a></li>
             </ul>
           </div>
           <div class="two warp">
             <span class="name">分类：</span>
             <ul class="items">
-              <li class="cur"><a href="">不限</a></li>
-              <li><a href="">Vue.js</a></li>
-              <li><a href="">Typescript</a></li>
-              <li><a href="">React.JS</a></li>
-              <li><a href="">HTML/CSS</a></li>
-              <li><a href="">JavaScript</a></li>
-              <li><a href="">Angular</a></li>
-              <li><a href="">Node.js</a></li>
-              <li><a href="">WebApp</a></li>
-              <li><a href="">小程序</a></li>
-              <li><a href="">前端工具</a></li>
-              <li><a href="">CSS</a></li>
-              <li><a href="">Html5</a></li>
-              <li><a href="">CSS3</a></li>
+              <li :class="{cur:course.current_category===0}"><a href="" @click.prevent.stop="course.current_category=0">不限</a>
+              </li>
+              <li :class="{cur:course.current_category===category.id}" v-for="category in course.category_list"><a
+                  href="" @click.prevent.stop="course.current_category=category.id">{{ category.name }}</a></li>
             </ul>
           </div>
         </div>
@@ -168,7 +151,20 @@
 
 <script setup>
 import Header from "../components/Header.vue"
-import Footer from "../components/Footer.vue"</script>
+import Footer from "../components/Footer.vue"
+import course from "@/api/course";
+
+// 获取课程学习方向
+course.get_course_direction().then(response => {
+  course.direction_list = response.data
+})
+
+// 获取课程分类
+course.get_course_category().then(response => {
+  course.category_list = response.data
+})
+
+</script>
 
 <style scoped>
 .top-wrap {
@@ -713,4 +709,12 @@ import Footer from "../components/Footer.vue"</script>
   color: #93999f;
   text-align: center
 }
+
+.type .type-wrap .warp:hover{
+  height: auto;
+}
+.type .type-wrap .warp:hover .items{
+  background-color: #f5f7fa;
+}
+
 </style>
