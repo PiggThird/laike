@@ -31,9 +31,7 @@
         </div>
         <div class="recomment clearfix">
           <a href="" target="_blank" title="" class="recomment-item">
-            <!--        <div class="img" style="background-image: url('/src/assets/60a7779909e3fc1206960344.png'); background-size: 100%; "></div>-->
-            <div class="img"
-                 style="background-image: image('src/assets/60a7779909e3fc1206960344.png'); background-size: 100%; "></div>
+            <div class="img" style="background-image: url('@/assets/60a7779909e3fc1206960344.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -48,8 +46,7 @@
             </div>
           </a>
           <a href="" target="_blank" title="前端框架及项目面试 聚焦Vue3/React/Webpack" class="recomment-item">
-            <!--            <div class="img" style="background-image: url('/src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>-->
-            <div class="img" style="background-image: image('src/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>
+            <div class="img" style="background-image: url('@/assets/5e3cfea008e9a61b06000338-360-202.jpg')"></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -65,7 +62,7 @@
           </a>
           <a href="" target="_blank" title="从0打造微前端框架，实战汽车资讯平台，系统掌握微前端架构设计与落地能力"
              class="recomment-item">
-            <div class="img" style="background-image: url('/src/assets/60d44ec8084b799712000676-360-202.jpg')"></div>
+            <div class="img" style="background-image: url('@/assets/60d44ec8084b799712000676-360-202.jpg');"></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -83,7 +80,7 @@
           </a>
           <a href="" target="_blank" title="" class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/604f2bab0952610803240324-140-140.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/604f2bab0952610803240324-140-140.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -127,7 +124,7 @@
         <div class="recomment clearfix">
           <a href="" target="_blank" title="Java工程师2021" class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/60a777ef0942d7bf06960344.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/60a777ef0942d7bf06960344.png'); background-size: 100%; "></div>
             <div class="details">
               <div class="title-box">
                 <p class="title"><span class="text">Java工程师2021</span> <span class="tag tixi">体系</span></p>
@@ -142,7 +139,7 @@
           </a>
           <a href="" target="_blank" title="Python工程师（全能型）" class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/60a77721093df37606960344.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/60a77721093df37606960344.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -158,7 +155,7 @@
           </a>
           <a href="" target="_blank" title="Java全栈工程师" class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/5dd6567b09d9d01c06000338.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/5dd6567b09d9d01c06000338.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -174,7 +171,7 @@
           </a>
           <a href="" target="_blank" title="" class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/604f2bb6099d6a8803240324-140-140.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/604f2bb6099d6a8803240324-140-140.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -219,7 +216,7 @@
         <div class="recomment clearfix">
           <a href="" target="_blank" title="移动端架构师成长体系课" class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/5ec5ddf209cd2c8606000338.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/5ec5ddf209cd2c8606000338.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -236,7 +233,7 @@
           <a href="" target="_blank" title="Flutter高级进阶实战  仿哔哩哔哩APP 一次性深度掌握Flutter高阶技能"
              class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/60497caf0971842912000676-360-202.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/60497caf0971842912000676-360-202.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -254,7 +251,7 @@
           <a href="" target="_blank" title="音视频基础+ffmpeg原理+项目实战 一课完成音视频技术开发入门"
              class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/5e5621d0092c054612000676-360-202.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/5e5621d0092c054612000676-360-202.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -270,7 +267,7 @@
           </a>
           <a href="" target="_blank" title="" class="recomment-item">
             <div class="img"
-                 style="background-image: url('/src/assets/604f2b52090de67603240324-140-140.png'); background-size: 100%; "></div>
+                 style="background-image: url('@/assets/604f2b52090de67603240324-140-140.png'); background-size: 100%; "></div>
             <div class="details">
               <!--路径单独写-->
               <div class="title-box">
@@ -530,7 +527,7 @@ const state = reactive({
   margin-top: -24px;
   width: 48px;
   height: 48px;
-  background: rgba(28, 31, 33, 0.1) url(/src/assets/icon-left-small.png) no-repeat center / 16px auto;
+  background: rgba(28, 31, 33, 0.1) url(~@/assets/icon-left-small.png) no-repeat center / 16px auto;
   border-radius: 50%;
   color: #FFFFFF;
   transition: all .2s;

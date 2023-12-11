@@ -40,6 +40,15 @@ const routes = [
         name: "User",
         component: () => import("../views/User.vue"),
     },
+    {
+        meta: {
+            title: "Laike-课程信息",
+            keepAlive: true,
+        },
+        path: '/project',
+        name: "Course",
+        component: () => import("../views/Course.vue"),
+    },
 
 ]
 
