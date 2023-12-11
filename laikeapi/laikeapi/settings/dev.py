@@ -389,3 +389,14 @@ SIMPLEUI_ANALYSIS = False
 SIMPLEUI_STATIC_OFFLINE = True
 # 首页图标地址
 SIMPLEUI_INDEX = 'http://www.laikecity.cn:8080/'
+
+
+# 阿里云OSS云存储
+OSS_ACCESS_KEY_ID = "LTAI5tH1aq3HTKKBktNEPS4W"
+OSS_ACCESS_KEY_SECRET = "OUdmBCi9pFMVA8jF9k4D7B4EToqsLL"
+OSS_ENDPOINT = "oss-cn-beijing.aliyuncs.com"    # 访问域名, 根据服务器上的实际配置修改
+OSS_BUCKET_NAME = "laikecity"    # oss 创建的 BUCKET 名称
+
+# 添加下面配置后 Django admin 后台上传的 ImageField, FileField 类型的字段都会被自动上传到 oss 的服务器中, 访问路径也会自动替换
+# 如果注释掉的话 oss 的配置会失效, 上传文件会存储到本地, 且访问路径也会变成本地
+DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
