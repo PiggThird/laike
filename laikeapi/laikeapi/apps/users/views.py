@@ -7,6 +7,7 @@ from rest_framework.decorators import action
 from .models import User
 from rest_framework import status
 from django_redis import get_redis_connection
+from .task import send_sms
 
 
 # Create your views here.
@@ -62,8 +63,7 @@ class SendSmSView(APIView):
         发送短信验证码接口
         :return:
         """
-        import re
-        from laikeapi.libs.tx_sms import get_code, send_message
+        from laikeapi.libs.tx_sms import get_code
         from django.conf import settings
         """发送短信验证码"""
         redis = get_redis_connection("sms_code")
@@ -75,7 +75,8 @@ class SendSmSView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         code = get_code()
-        send_message(mobile, code)
+        # send_message(mobile, code)
+        send_sms.delay(mobile, code)
 
         # 记录code到redis中，并以time作为有效期
         # 使用redis提供的管道对象pipeline来优化redis的写入操作[添加/修改/删除]
