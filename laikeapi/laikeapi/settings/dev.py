@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'home',
     'users',
+    'courses',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,8 @@ DATABASES = {
         'USER': 'laike_user',
         'PASSWORD': 'laike',
         'OPTIONS': {
-            'charset': 'utf8mb4',  # 连接选项配置,mysql8.0以上无需配置
+            'charset': 'utf8',  # 连接选项配置,mysql8.0以上无需配置
+            'init_command': "SET collation_connection = utf8_unicode_ci",  # 适当调整排序规则
         },
         'POOL_OPTIONS': {  # 连接池的配置信息
             'POOL_SIZE': 10,  # 连接池默认创建的链接对象的数量

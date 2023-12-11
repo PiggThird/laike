@@ -21,6 +21,7 @@ from django.views.static import serve  # 静态文件代理访问模块
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'uploads/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
-    path('home/', include("home.urls")),
+    path('', include("home.urls")),
     path('users/', include("users.urls")),
+    path('courses/', include("courses.urls")),
 ]
