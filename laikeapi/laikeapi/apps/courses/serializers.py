@@ -1,6 +1,6 @@
 from drf_haystack.serializers import HaystackSerializer
 from rest_framework import serializers
-
+from django.conf import settings
 from .models import CourseDirection, CourseCategory, Course
 from .search_indexes import CourseIndex
 
@@ -40,3 +40,9 @@ class CourseIndexHaystackSerializer(HaystackSerializer):
         index_classes = [CourseIndex]
         fields = ["text", "id", "name", "course_cover", "get_level_display", "students", "get_status_display",
                   "pub_lessons", "price", "discount", "orders"]
+
+    def to_representation(self, instance):
+        """用于指定返回数据的字段的"""
+        # 课程的图片，在这里通过elasticsearch提供的，所以不会提供图片地址左边的域名的。因此在这里手动拼接
+        instance.course_cover = f'//{settings.OSS_BUCKET_NAME}.{settings.OSS_ENDPOINT}/uploads/{instance.course_cover}'
+        return super().to_representation(instance)
