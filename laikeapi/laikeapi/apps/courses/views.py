@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from drf_haystack.filters import HaystackFilter
 from drf_haystack.viewsets import HaystackViewSet
 from rest_framework.filters import OrderingFilter
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django_redis import get_redis_connection
@@ -11,7 +11,7 @@ from django_redis import get_redis_connection
 from .models import CourseDirection, CourseCategory, Course
 from .paginations import CourseListPageNumberPagination
 from .serializers import CourseDirectionModelSerializer, CourseCategoryModelSerializer, CourseInfoModelSerializer, \
-    CourseIndexHaystackSerializer
+    CourseIndexHaystackSerializer, CourseRetrieveModelSerializer
 
 
 class CourseDirectionListAPIView(ListAPIView):
@@ -110,3 +110,9 @@ class HotWordAPIView(APIView):
         # 按分数store进行倒序显示排名靠前的指定数量的热词
         word_list = redis.zrevrange(constants.DEFAULT_HOT_WORD, 0, constants.HOT_WORD_LENGTH - 1)
         return Response(word_list)
+
+
+class CourseRetrieveAPIView(RetrieveAPIView):
+    """课程详情信息"""
+    queryset = Course.objects.filter(is_show=True, is_deleted=False).all()
+    serializer_class = CourseRetrieveModelSerializer

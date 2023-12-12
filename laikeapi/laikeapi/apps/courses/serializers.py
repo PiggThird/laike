@@ -1,7 +1,8 @@
+from django.conf import settings
 from drf_haystack.serializers import HaystackSerializer
 from rest_framework import serializers
-from django.conf import settings
-from .models import CourseDirection, CourseCategory, Course
+
+from .models import CourseDirection, CourseCategory, Course, Teacher
 from .search_indexes import CourseIndex
 
 
@@ -46,3 +47,28 @@ class CourseIndexHaystackSerializer(HaystackSerializer):
         # 课程的图片，在这里通过elasticsearch提供的，所以不会提供图片地址左边的域名的。因此在这里手动拼接
         instance.course_cover = f'//{settings.OSS_BUCKET_NAME}.{settings.OSS_ENDPOINT}/uploads/{instance.course_cover}'
         return super().to_representation(instance)
+
+
+class CourseTeacherModelSerializer(serializers.ModelSerializer):
+    """课程老师信息"""
+
+    class Meta:
+        model = Teacher
+        fields = ["id", "name", "avatar", "role", "get_role_display", "title", "signature", "brief"]
+
+
+class CourseRetrieveModelSerializer(serializers.ModelSerializer):
+    """课程详情的序列化器"""
+    direction_name = serializers.CharField(source="direction.name")
+    # diretion = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    category_name = serializers.CharField(source="category.name")
+    # 序列化器嵌套
+    teacher = CourseTeacherModelSerializer()
+
+    class Meta:
+        model = Course
+        fields = [
+            "name", "course_cover", "course_video", "level", "get_level_display",
+            "description", "pub_date", "status", "get_status_display", "students", "discount",
+            "lessons", "pub_lessons", "price", "direction", "direction_name", "category", "category_name", "teacher"
+        ]
