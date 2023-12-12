@@ -46,8 +46,9 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',  # cors跨域子应用
-    'ckeditor',   # 富文本编辑器
-    'stdimage',  # 生成缩略图
+    'ckeditor',     # 富文本编辑器
+    'stdimage',     # 生成缩略图
+    'haystack',     # 搜索引擎框架
 
     'home',
     'users',
@@ -93,7 +94,9 @@ ROOT_URLCONF = 'laikeapi.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR, "templates",  # BASE_DIR 是apps的父级目录，是主应用目录，templates需要手动创建
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -400,3 +403,19 @@ OSS_BUCKET_NAME = "laikecity"    # oss 创建的 BUCKET 名称
 # 添加下面配置后 Django admin 后台上传的 ImageField, FileField 类型的字段都会被自动上传到 oss 的服务器中, 访问路径也会自动替换
 # 如果注释掉的话 oss 的配置会失效, 上传文件会存储到本地, 且访问路径也会变成本地
 DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
+
+
+# haystack连接elasticsearch的配置信息
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        # haystack操作es的核心模块
+        'ENGINE': 'haystack.backends.elasticsearch7_backend.Elasticsearch7SearchEngine',
+        # es服务端地址
+        'URL': 'http://10.0.0.100:9200/',
+        # es索引仓库
+        'INDEX_NAME': 'haystack',
+    },
+}
+
+# 当mysqlORM操作数据库改变时，自动更新es的索引，否则es的索引会找不到新增的数据
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
