@@ -22,7 +22,9 @@
         <div class="wrap-right">
           <h3 class="course-name">{{ course.info.name }}</h3>
           <p class="data">
-            {{ course.info.students }}人在学&nbsp;&nbsp;&nbsp;&nbsp;课程总时长：{{ course.info.pub_lessons }}课时/{{ course.info.lessons }}课时&nbsp;&nbsp;&nbsp;&nbsp;难度：{{ course.info.get_level_display }}</p>
+            {{ course.info.students }}人在学&nbsp;&nbsp;&nbsp;&nbsp;课程总时长：{{
+              course.info.pub_lessons
+            }}课时/{{ course.info.lessons }}课时&nbsp;&nbsp;&nbsp;&nbsp;难度：{{ course.info.get_level_display }}</p>
           <div class="sale-time" v-if="course.info.discount.type">
             <p class="sale-type">{{ course.info.discount.type }}</p>
             <p class="expire" v-if="course.info.discount.expire>0">距离结束：仅剩
@@ -52,7 +54,7 @@
         <ul class="tab-list">
           <li :class="course.tabIndex===1?'active':''" @click="course.tabIndex=1">详情介绍</li>
           <li :class="course.tabIndex===2?'active':''" @click="course.tabIndex=2">课程章节 <span
-              :class="course.tabIndex!==2?'free':''">(试学)</span></li>
+              :class="course.tabIndex!==2?'free':''" v-if="course.con_free_study">(试学)</span></li>
           <li :class="course.tabIndex===3?'active':''" @click="course.tabIndex=3">用户评论 (42)</li>
           <li :class="course.tabIndex===4?'active':''" @click="course.tabIndex=4">常见问题</li>
         </ul>
@@ -63,35 +65,22 @@
           <div class="tab-item" v-if="course.tabIndex===2">
             <div class="tab-item-title">
               <p class="chapter">课程章节</p>
-              <p class="chapter-length">共11章 147个课时</p>
+              <p class="chapter-length">共{{ course.chapter_list.length }}章 {{ course.info.lessons }}个课时</p>
             </div>
-            <div class="chapter-item">
-              <p class="chapter-title"><img src="../assets/1.svg" alt="">第1章·Linux硬件基础</p>
+            <div class="chapter-item" v-for="chapter in course.chapter_list">
+              <p class="chapter-title"><img src="../assets/1.svg" alt="">第{{ chapter.orders }}章·{{ chapter.name }}</p>
+              <div class="chapter-title" style="padding-left: 2.4rem;" v-if="chapter.summary"
+                   v-html="chapter.summary"></div>
               <ul class="lesson-list">
-                <li class="lesson-item">
-                  <p class="name"><span class="index">1-1</span> 课程介绍-学习流程<span class="free">免费</span></p>
-                  <p class="time">07:30 <img src="../assets/chapter-player.svg"></p>
-                  <button class="try">立即试学</button>
-                </li>
-                <li class="lesson-item">
-                  <p class="name"><span class="index">1-2</span> 服务器硬件-详解<span class="free">免费</span></p>
-                  <p class="time">07:30 <img src="../assets/chapter-player.svg"></p>
-                  <button class="try">立即试学</button>
-                </li>
-              </ul>
-            </div>
-            <div class="chapter-item">
-              <p class="chapter-title"><img src="../assets/1.svg" alt="">第2章·Linux发展过程</p>
-              <ul class="lesson-list">
-                <li class="lesson-item">
-                  <p class="name"><span class="index">2-1</span> 操作系统组成-Linux发展过程</p>
-                  <p class="time">07:30 <img src="../assets/chapter-player.svg"></p>
-                  <button class="try">立即购买</button>
-                </li>
-                <li class="lesson-item">
-                  <p class="name"><span class="index">2-2</span> 自由软件-GNU-GPL核心讲解</p>
-                  <p class="time">07:30 <img src="../assets/chapter-player.svg"></p>
-                  <button class="try">立即购买</button>
+                <li class="lesson-item" v-for="lesson in chapter.get_lesson_list">
+                  <p class="name">
+                    <span class="index">{{ chapter.orders }}-{{ lesson.orders }}</span>
+                    {{ lesson.name }}
+                    <span class="free" v-if="lesson.free_trail">免费</span>
+                  </p>
+                  <p class="time">{{ lesson.duration }} <img src="../assets/chapter-player.svg"></p>
+                  <button class="try" v-if="lesson.free_trail">立即试学</button>
+                  <button class="try" v-else>购买课程</button>
                 </li>
               </ul>
             </div>
@@ -163,6 +152,10 @@ if (course.course_id > 0) {
         router.go(-1)
       }
     })
+  })
+  // 获取课程章节信息
+  course.get_course_chapters().then(response => {
+    course.chapter_list = response.data
   })
 } else {
   ElMessage.error({
