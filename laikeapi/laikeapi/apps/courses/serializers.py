@@ -2,7 +2,7 @@ from django.conf import settings
 from drf_haystack.serializers import HaystackSerializer
 from rest_framework import serializers
 
-from .models import CourseDirection, CourseCategory, Course, Teacher
+from .models import CourseDirection, CourseCategory, Course, Teacher, CourseChapter
 from .search_indexes import CourseIndex
 
 
@@ -72,3 +72,10 @@ class CourseRetrieveModelSerializer(serializers.ModelSerializer):
             "description", "pub_date", "status", "get_status_display", "students", "discount",
             "lessons", "pub_lessons", "price", "direction", "direction_name", "category", "category_name", "teacher"
         ]
+
+
+class CourseChapterModelSerializer(serializers.ModelSerializer):
+    """课程章节序列化器"""
+    class Meta:
+        model = CourseChapter
+        fields = ["id", "orders", "name", "summary", "get_lesson_list"]
