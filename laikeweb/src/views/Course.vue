@@ -19,8 +19,7 @@
             </div>
             <div class="search-hot">
               <span>热搜：</span>
-              <a href="">Java工程师</a>
-              <a href="">Vue</a>
+              <a href="" @click.stop.prevent="search_by_hotword(hot_word)" v-for="hot_word in course.hot_word_list">{{hot_word}}</a>
             </div>
           </div>
         </div>
@@ -135,6 +134,13 @@ const get_category = () => {
 
 get_category();
 
+const get_hot_word = ()=>{
+  // 搜索热门关键字列表
+  course.get_hot_word().then(response=>{
+    course.hot_word_list = response.data
+  })
+}
+
 const get_course_list = () => {
   // 获取课程列表
   let ret = null // 预设一个用于保存服务端返回的数据
@@ -152,10 +158,17 @@ const get_course_list = () => {
     // 优惠活动的倒计时
     course.start_timer();
   })
+  // 每次获取课程都同时获取一次热搜词列表
+  get_hot_word();
 }
 
 get_course_list();
 
+// 当热搜词被点击，进行搜索
+const search_by_hotword = (hot_word)=>{
+  course.text = hot_word
+  get_course_list()
+}
 
 watch(
     // 监听当前学习方向，在改变时，更新对应方向下的课程分类与课程信息
