@@ -183,6 +183,7 @@ const add_cart = (course_info)=>{
   // 从本地存储中获取jwt token
   let token = sessionStorage.token || localStorage.token;
   cart.add_course_to_cart(course_info.id, token).then(response=>{
+    store.commit("cart_total", response.data.cart_total)
     ElMessage.success(response.data.errmsg)
   }).catch(error=>{
     if(error.response.status === 401){

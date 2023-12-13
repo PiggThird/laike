@@ -1,4 +1,5 @@
 from rest_framework_jwt.utils import jwt_payload_handler as payload_handler
+from django_redis import get_redis_connection
 
 
 def jwt_payload_handler(user):
@@ -19,3 +20,19 @@ def jwt_payload_handler(user):
         payload['credit'] = user.credit
 
     return payload
+
+
+def jwt_response_payload_handler(token, user, request):
+    """
+    增加返回购物车的商品数量
+    token: jwt token
+    user: 用户模型对象
+    request: 客户端的请求对象
+    """
+    redis = get_redis_connection("cart")
+    cart_total = redis.hlen(f"cart_{user.id}")
+
+    return {
+        "cart_total": cart_total,
+        "token": token
+    }

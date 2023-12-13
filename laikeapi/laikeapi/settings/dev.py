@@ -328,6 +328,8 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(weeks=1),    # 一周有效，
     # 自定义载荷
     'JWT_PAYLOAD_HANDLER': 'laikeapi.utils.authenticate.jwt_payload_handler',
+    # 自定义响应数据
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'laikeapi.utils.authenticate.jwt_response_payload_handler'
 }
 
 

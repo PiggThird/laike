@@ -62,6 +62,7 @@ const loginhandler = ()=>{
     let payload_data = JSON.parse(atob(payload))              // 用户信息
     console.log(payload_data)
     store.commit("login", payload_data)
+    store.commit("cart_total", response.data.cart_total)
 
     // 登录成功提示
     ElMessage.success("登录成功！")

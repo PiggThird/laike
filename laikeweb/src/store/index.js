@@ -5,15 +5,16 @@ import createPersistedState from "vuex-persistedstate"
 export default createStore({
     // 调用永久存储vuex数据的插件，localstorage里会多一个名叫vuex的Key，里面就是vuex的数据
     plugins: [createPersistedState()],
-    state() {                      // 数据存储位置，相当于组件中的data
+    state() {                       // 数据存储位置，相当于组件中的data
         return {
-            user: {}
+            user: {},
+            cart_total: 0,          // 购物车中的商品数量，默认为0
         }
     },
     getters: {
         getUserInfo(state) {
             // 从jwt的载荷中提取用户信息
-            let now = parseInt((new Date() - 0) / 1000);
+            let now = parseInt((new Date() - 0) / 1000);    // js获取本地时间戳(秒)
             if (state.user.exp === undefined) {
                 // 没登录
                 state.user = {}
@@ -38,8 +39,13 @@ export default createStore({
         },
         logout(state) {             // 退出登录
             state.user = {}
+            state.cart_total = 0    // 退出登录就要将购物车清0避免下一个登录用户数据错误
             localStorage.token = null;
             sessionStorage.token = null;
-        }
+        },
+        cart_total(state, total) {
+            // 设置商品数量的总数
+            state.cart_total = total
+        },
     }
 })

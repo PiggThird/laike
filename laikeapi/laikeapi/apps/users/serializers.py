@@ -19,8 +19,10 @@ class UserSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         user = self._get_user(attrs)
         token = self._get_token(user)
+        cart_total = self._get_cart_total(user)
         self.context['user'] = user
         self.context['token'] = token
+        self.context['cart_total'] = cart_total
         return attrs
 
     def _get_user(self, attrs):
@@ -49,6 +51,12 @@ class UserSerializer(serializers.ModelSerializer):
         payload = jwt_payload_handler(user)  # 通过user对象获得payload
         token = jwt_encode_handler(payload)  # 通过payload获得token
         return token
+
+    def _get_cart_total(self, user):
+        redis = get_redis_connection("cart")
+        cart_total = redis.hlen(f"cart_{user.id}")
+        return cart_total
+
 
 
 class CodeUserSerializer(serializers.ModelSerializer):

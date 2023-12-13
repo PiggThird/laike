@@ -18,7 +18,8 @@ class LoginView(ViewSet):
         if ser.is_valid():
             token = ser.context.get('token')
             username = ser.context.get('user').username
-            return Response({'code': 0, 'username': username, 'token': token})
+            cart_total = ser.context.get('cart_total')
+            return Response({'code': 0, 'username': username, 'token': token, "cart_total": cart_total})
         else:
             return Response({'code': 1, 'msg': ser.errors})
 
