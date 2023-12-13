@@ -19,7 +19,8 @@
             </div>
             <div class="search-hot">
               <span>热搜：</span>
-              <a href="" @click.stop.prevent="search_by_hotword(hot_word)" v-for="hot_word in course.hot_word_list">{{hot_word}}</a>
+              <a href="" @click.stop.prevent="search_by_hotword(hot_word)"
+                 v-for="hot_word in course.hot_word_list">{{ hot_word }}</a>
             </div>
           </div>
         </div>
@@ -83,10 +84,10 @@
               </p>
               <p class="two clearfix">
                 <span class="price l red bold"
-                      v-if="course_info.discount.price">￥{{ parseFloat(course_info.discount.price).toFixed(2) }}</span>
+                      v-if="course_info.discount.price>=0">￥{{ parseFloat(course_info.discount.price).toFixed(2) }}</span>
                 <span class="price l red bold" v-else>￥{{ parseFloat(course_info.price).toFixed(2) }}</span>
                 <span class="origin-price l delete-line"
-                      v-if="course_info.discount.price">￥{{ parseFloat(course_info.price).toFixed(2) }}</span>
+                      v-if="course_info.discount.price>=0">￥{{ parseFloat(course_info.price).toFixed(2) }}</span>
                 <span class="add-shop-cart r"><img class="icon imv2-shopping-cart"
                                                    src="../assets/cart2.svg">加购物车</span>
               </p>
@@ -134,9 +135,9 @@ const get_category = () => {
 
 get_category();
 
-const get_hot_word = ()=>{
+const get_hot_word = () => {
   // 搜索热门关键字列表
-  course.get_hot_word().then(response=>{
+  course.get_hot_word().then(response => {
     course.hot_word_list = response.data
   })
 }
@@ -165,7 +166,7 @@ const get_course_list = () => {
 get_course_list();
 
 // 当热搜词被点击，进行搜索
-const search_by_hotword = (hot_word)=>{
+const search_by_hotword = (hot_word) => {
   course.text = hot_word
   get_course_list()
 }

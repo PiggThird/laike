@@ -13,7 +13,7 @@ const course = reactive({
     count: 0,                   // 课程信息列表的数量
     has_perv: false,            // 是否有上一页
     has_next: false,            // 是否有下一页
-    timer: null,                // 课程相关数据的定时器
+    timer: 0,                   // 课程相关数据的定时器
     text: "",                   // 搜索文本框内容
     hot_word_list: [],          // 热搜词列表
     course_id: null,            // 课程ID
