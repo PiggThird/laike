@@ -1,7 +1,7 @@
+import constants
 from rest_framework import serializers
 from .models import User
 from rest_framework.exceptions import ValidationError
-from laikeapi.utils import constants
 from django_redis import get_redis_connection
 
 

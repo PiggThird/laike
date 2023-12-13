@@ -69,7 +69,7 @@ MIDDLEWARE = [
 # CORS的配置信息:
 # 方案1：
 # CORS_ORIGIN_WHITELIST = (
-#     'http://www.luffycity.cn:3000',
+#     'http://www.laikecity.cn:8080',
 # )
 # CORS_ALLOW_CREDENTIALS = False  # 不允许ajax跨域请求时携带cookie
 
