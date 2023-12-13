@@ -75,4 +75,23 @@ class CartAPIView(APIView):
                 # 勾选状态：把课程ID转换成bytes类型，判断当前ID是否在购物车字典中作为key存在，如果存在，判断当前课程ID对应的值是否是字符串"1"，是则返回True
                 "selected": (str(course.id).encode() in cart_hash) and cart_hash[str(course.id).encode()].decode() == "1"
             })
-        return Response({"errmsg": "ok！", "cart": data})
+        return Response({"errmsg": "ok!", "cart": data})
+
+    def patch(self, request):
+        """切换购物车中商品勾选状态"""
+        # 谁的购物车？user_id
+        user_id = request.user.id
+        # 获取购物车的课程ID与勾选状态
+        course_id = int(request.data.get("course_id", 0))
+        selected = int(bool(request.data.get("selected", True)))
+
+        redis = get_redis_connection("cart")
+
+        try:
+            Course.objects.get(pk=course_id, is_show=True, is_deleted=False)
+        except Course.DoesNotExist:
+            redis.hdel(f"cart_{user_id}", course_id)
+            return Response({"errmsg": "当前商品不存在或已经被下架！！"})
+
+        redis.hset(f"cart_{user_id}", course_id, selected)
+        return Response({"errmsg": "ok"})
