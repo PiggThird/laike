@@ -46,7 +46,12 @@
               <button class="buy-now">立即购买</button>
               <button class="free">免费试学</button>
             </div>
-            <div class="add-cart"><img src="../assets/cart-yellow.svg" alt="">加入购物车</div>
+            <el-popconfirm title="您确认添加当前课程加入购物车吗？" @confirm="add_cart" confirmButtonText="买买买！"
+                           cancelButtonText="误操作！">
+              <template #reference>
+                <div class="add-cart"><img src="../assets/cart-yellow.svg" alt="">加入购物车</div>
+              </template>
+            </el-popconfirm>
           </div>
         </div>
       </div>
@@ -122,8 +127,11 @@ import Footer from "../components/Footer.vue"
 import {AliPlayerV3} from "vue-aliplayer-v3"
 import {ElMessage} from 'element-plus'
 import course from "../api/course"
+import cart from "@/api/cart";
 import {fill0} from "../utils/func";
+import {useStore} from "vuex";
 
+const store = useStore()
 let player = ref(null)
 let route = useRoute()
 let router = useRouter()
@@ -190,6 +198,21 @@ const onPause = (event) => {
 const onPlaying = (event) => {
   console.log("播放中");
   console.log(player.value.getCurrentTime());
+}
+
+// 添加商品到购物车
+let add_cart = ()=>{
+  let token = sessionStorage.token || localStorage.token
+  // 详情页中添加商品到购物车，不用传递参数，直接使用state.course来获取课程信息
+  cart.add_course_to_cart(course.course_id, token).then(response=>{
+    ElMessage.success(response.data.errmsg)
+  }).catch(error=>{
+    if(error.response.status === 401){
+      store.commit("logout");
+      ElMessage.error("您尚未登录或已登录超时，请登录后继续操作！");
+    }
+    ElMessage.error("添加商品到购物车失败！")
+  })
 }
 
 </script>

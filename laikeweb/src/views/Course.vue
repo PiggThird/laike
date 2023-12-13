@@ -84,12 +84,14 @@
               </p>
               <p class="two clearfix">
                 <span class="price l red bold"
-                      v-if="course_info.discount.price>=0">￥{{ parseFloat(course_info.discount.price).toFixed(2) }}</span>
+                      v-if="course_info.discount.price>=0">￥{{
+                    parseFloat(course_info.discount.price).toFixed(2)
+                  }}</span>
                 <span class="price l red bold" v-else>￥{{ parseFloat(course_info.price).toFixed(2) }}</span>
                 <span class="origin-price l delete-line"
                       v-if="course_info.discount.price>=0">￥{{ parseFloat(course_info.price).toFixed(2) }}</span>
-                <span class="add-shop-cart r"><img class="icon imv2-shopping-cart"
-                                                   src="../assets/cart2.svg">加购物车</span>
+                <span class="add-shop-cart r" @click.prevent.stop="add_cart(course_info)"><img
+                    class="icon imv2-shopping-cart" src="../assets/cart2.svg">加入购物车</span>
               </p>
             </router-link>
           </li>
@@ -118,8 +120,13 @@
 import Header from "../components/Header.vue"
 import Footer from "../components/Footer.vue"
 import course from "@/api/course";
+import { ElMessage } from 'element-plus'
+import cart from "../api/cart";
 import {watch} from "vue";
 import {fill0} from "../utils/func";
+import {useStore} from "vuex";
+
+const store = useStore()
 
 // 获取课程学习方向
 course.get_course_direction().then(response => {
@@ -169,6 +176,22 @@ get_course_list();
 const search_by_hotword = (hot_word) => {
   course.text = hot_word
   get_course_list()
+}
+
+// 添加课程到购物车
+const add_cart = (course_info)=>{
+  // 从本地存储中获取jwt token
+  let token = sessionStorage.token || localStorage.token;
+  cart.add_course_to_cart(course_info.id, token).then(response=>{
+    ElMessage.success(response.data.errmsg)
+  }).catch(error=>{
+    if(error.response.status === 401){
+      store.commit("logout");
+      ElMessage.error("您尚未登录或已登录超时，请登录后继续操作！");
+    }else{
+      ElMessage.error("添加商品到购物车失败！");
+    }
+  })
 }
 
 watch(
