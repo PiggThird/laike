@@ -55,7 +55,7 @@ class OrderDetail(BaseModel):
 
     class Meta:
         db_table = "lk_order_course"
-        verbose_name = "订单详情"
+        verbose_name = "订单项详情"
         verbose_name_plural = verbose_name
 
     def __str__(self):
