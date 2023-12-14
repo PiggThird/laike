@@ -93,6 +93,7 @@ import Header from "../components/Header.vue"
 import Footer from "../components/Footer.vue"
 import cart from "../api/cart"
 import {useStore} from "vuex";
+import {ElMessage} from "element-plus";
 
 const store = useStore()
 
@@ -111,6 +112,10 @@ const get_cart = () => {
           get_cart_total();
         },
     )
+  }).catch(error=>{
+    if(error?.response?.status===400){
+          ElMessage.success("登录超时！请重新登录后再继续操作~");
+    }
   })
 }
 
