@@ -21,6 +21,7 @@ class CourseIndex(indexes.SearchIndex, indexes.Indexable):
     lessons = indexes.IntegerField(model_attr="lessons")
     pub_lessons = indexes.IntegerField(model_attr="pub_lessons")
     price = indexes.DecimalField(model_attr="price")
+    credit = indexes.IntegerField(model_attr="credit")      # 新增积分字段
     discount = indexes.CharField(model_attr="discount_json")
     orders = indexes.IntegerField(model_attr="orders")
 
