@@ -49,11 +49,11 @@ class OrderModelSerializer(serializers.ModelSerializer):
                 # 添加订单与课程的关系
                 course_list = Course.objects.filter(pk__in=course_id_list, is_deleted=False, is_show=True).all()
                 detail_list = []
-                total_price = 0 # 本次订单的总价格
-                real_price = 0  # 本次订单的实付总价
+                total_price = 0     # 本次订单的总价格
+                real_price = 0      # 本次订单的实付总价
 
                 for course in course_list:
-                    discount_price = float(course.discount.get("price", 0)) # 获取课程原价
+                    discount_price = float(course.discount.get("price", 0))     # 获取课程原价
                     discount_name = course.discount.get("type", "")
                     detail_list.append(OrderDetail(
                         order=order,

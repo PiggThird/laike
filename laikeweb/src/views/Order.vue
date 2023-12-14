@@ -272,7 +272,7 @@ const commit_order = () => {
     store.commit("set_cart_total", store.state.cart_total - cart.select_course_list.length);
   }).catch(error => {
     if (error?.response?.status === 400) {
-      ElMessage.success("登录超时！请重新登录后再继续操作~");
+      ElMessage.error("登录超时！请重新登录后再继续操作~");
     }
   })
 }
