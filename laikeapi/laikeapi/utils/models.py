@@ -19,3 +19,9 @@ class BaseModel(models.Model):
         # 设置当前模型类并非真正的模型，而是一种保存公共代码的抽象模型类
         # 这种模型在数据迁移中不会被当做数据模型来创建数据表
         abstract = True
+
+    def __str__(self):
+        if self.name:
+            return self.name
+        else:
+            return str(self)
