@@ -11,12 +11,12 @@ logger = logging.getLogger("django")
 
 
 class OrderModelSerializer(serializers.ModelSerializer):
-    pay_link = serializers.CharField(read_only=True)
+    """订单序列化器"""
     user_coupon_id = serializers.IntegerField(write_only=True, default=-1)
 
     class Meta:
         model = Order
-        fields = ["pay_type", "id", "order_number", "pay_link", "user_coupon_id", "credit"]
+        fields = ["pay_type", "id", "order_number", "user_coupon_id", "credit"]
         read_only_fields = ["id", "order_number"]
         extra_kwargs = {
             "pay_type": {"write_only": True},
@@ -156,9 +156,6 @@ class OrderModelSerializer(serializers.ModelSerializer):
                     print(f"{user_id}:{user_coupon_id}")
                     redis = get_redis_connection("coupon")
                     redis.delete(f"{user_id}:{user_coupon_id}")
-
-                # todo 支付链接地址[后面实现支付功能的时候，再做]
-                order.pay_link = ""
 
                 return order
             except Exception as e:

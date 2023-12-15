@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'coupon',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -448,3 +449,20 @@ HAYSTACK_CONNECTIONS = {
 
 # 当mysqlORM操作数据库改变时，自动更新es的索引，否则es的索引会找不到新增的数据
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
+# 支付宝相关配置
+ALIPAY = {
+    # 'gateway': 'https://openapi.alipay.com/gateway.do',   # 真实网关地址
+    # 'gateway': 'https://openapi.alipaydev.com/gateway.do',  # 沙箱网关地址
+    'gateway': 'https://openapi-sandbox.dl.alipaydev.com/gateway.do',  # 沙箱网关地址
+    'appid': '9021000131659004',                            # 支付应用ID
+    'sign_type': 'RSA2',                                    # 签证的加密算法
+    'debug': True,                                          # 沙箱模式下必须设置为True
+    'verbose': True,                                        # 是否在调试模式下输出调试数据
+    'timeout': 15,                                          # 请求超时时间，单位：秒
+    "app_private_key_path": BASE_DIR / "apps/payments/keys/app_private_key.pem",        # 应用私钥路径
+    "alipay_public_key_path": BASE_DIR / "apps/payments/keys/alipay_public_key.pem",    # 支付宝公钥路径
+    "return_url": "http://www.laikecity.cn:8080/alipay",                                # 同步回调结果通知地址
+    "notify_url": "http://api.laikecity.cn:8000/payments/alipay/notify",                # 异步回调结果通知地址
+}
