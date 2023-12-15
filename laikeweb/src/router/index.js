@@ -52,6 +52,15 @@ const routes = [
                 },
                 {
                   meta:{
+                    title: "Laike-我的课程",
+                    keepAlive: true
+                  },
+                  path: 'course',
+                  name: "UserCourse",
+                  component: ()=> import("../components/user/Course.vue"),
+                },
+                {
+                  meta:{
                     title: "Laike--我的订单",
                     keepAlive: true,
                     authorization: true,

@@ -1,12 +1,16 @@
 from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from .serializers import UserSerializer, UserRegisterModelSerializer, CodeUserSerializer
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
-from .models import User
 from rest_framework import status
 from django_redis import get_redis_connection
+from courses.paginations import CourseListPageNumberPagination
+
+from .serializers import UserSerializer, UserRegisterModelSerializer, CodeUserSerializer, UserCourseModelSerializer
+from .models import User, UserCourse
+from courses.models import Course
 from .task import send_sms
 
 
@@ -88,3 +92,19 @@ class SendSmSView(APIView):
         pipe.execute()  # 提交事务，同时把暂存在pipeline的数据一次性提交给redis
 
         return Response({"errmsg": "OK"}, status=status.HTTP_200_OK)
+
+
+class CourseListAPIView(ListAPIView):
+    """当前用户的课程列表信息"""
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserCourseModelSerializer
+    pagination_class = CourseListPageNumberPagination
+
+    def get_queryset(self):
+        user = self.request.user
+        query = UserCourse.objects.filter(user=user)
+        course_type = int(self.request.query_params.get("type", -1))
+        course_type_list = [item[0] for item in Course.COURSE_TYPE]
+        if course_type in course_type_list:
+            query = query.filter(course__course_type=course_type)
+        return query.order_by("-id").all()

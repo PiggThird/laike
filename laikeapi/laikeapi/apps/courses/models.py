@@ -45,7 +45,7 @@ class CourseCategory(BaseModel):
 
 
 class Course(BaseModel):
-    course_type = (
+    COURSE_TYPE = (
         (0, '实战课程'),
         (1, '会员专享'),
         (2, '学位课程'),
@@ -68,7 +68,7 @@ class Course(BaseModel):
     }, max_length=255, delete_orphans=True, upload_to="course/cover", null=True, verbose_name="封面图片", blank=True)
     course_video = models.FileField(upload_to="course/video", max_length=128, verbose_name="封面视频", blank=True,
                                     null=True)
-    course_type = models.SmallIntegerField(choices=course_type, default=0, verbose_name="付费类型")
+    course_type = models.SmallIntegerField(choices=COURSE_TYPE, default=0, verbose_name="付费类型")
     level = models.SmallIntegerField(choices=level_choices, default=1, verbose_name="难度等级")
     description = RichTextUploadingField(null=True, blank=True, verbose_name="详情介绍")
     pub_date = models.DateField(auto_now_add=True, verbose_name="发布日期")
