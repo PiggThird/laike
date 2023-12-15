@@ -32,11 +32,12 @@
             <router-link to="">我的课堂</router-link>
             <el-dropdown>
                 <span class="el-dropdown-link">
-                  <el-avatar class="avatar" size="50" src="@/assets/avatar.jpg"></el-avatar>
+                  <el-avatar class="avatar" size="50" src="
+https://laikecity.oss-cn-beijing.aliyuncs.com/uploads/avatar/2023/avatar.jpg"></el-avatar>
                 </span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <el-dropdown-item :icon="UserFilled">学习中心</el-dropdown-item>
+                  <el-dropdown-item :icon="UserFilled"><router-link to="/user">个人中心</router-link></el-dropdown-item>
                   <el-dropdown-item :icon="List">订单列表</el-dropdown-item>
                   <el-dropdown-item :icon="Setting">个人设置</el-dropdown-item>
                   <el-dropdown-item :icon="Position" @click="logout">注销登录</el-dropdown-item>
