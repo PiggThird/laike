@@ -162,7 +162,9 @@ import cart from "../api/cart"
 import order from "../api/order";
 import {ElMessage} from "element-plus";
 import router from "../router";
+import {useStore} from "vuex";
 
+let store = useStore()
 order.discount_price = 0;
 
 const get_select_course = () => {
@@ -219,14 +221,16 @@ const commit_order = () => {
     }
 
   order.create_order(user_coupon_id,token).then(response => {
-    console.log(response.data.order_number)   // todo 订单号
-    console.log(response.data.pay_link)       // todo 支付链接
+    console.log(response.data.order_number)   // 订单号
     // 成功提示
     ElMessage.success("下单成功！马上跳转到支付页面，请稍候~")
     // 扣除掉被下单的商品数量，更新购物车中的商品数量
     store.commit("set_cart_total", store.state.cart_total - cart.select_course_list.length);
     // 订单生成后 先临时扣除用户积分
     order.has_credit = order.has_credit - order.credit
+    order.alipay_page_pay(response.data.order_number).then(response=>{
+      window.open(response.data.link,"_blank");
+    })
   }).catch(error => {
     if (error?.response?.status === 400) {
       ElMessage.error("登录超时！请重新登录后再继续操作~");
