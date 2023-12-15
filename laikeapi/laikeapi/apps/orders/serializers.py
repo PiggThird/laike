@@ -13,10 +13,11 @@ logger = logging.getLogger("django")
 class OrderModelSerializer(serializers.ModelSerializer):
     """订单序列化器"""
     user_coupon_id = serializers.IntegerField(write_only=True, default=-1)
+    order_timeout = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Order
-        fields = ["pay_type", "id", "order_number", "user_coupon_id", "credit"]
+        fields = ["pay_type", "id", "order_number", "user_coupon_id", "credit", "order_timeout"]
         read_only_fields = ["id", "order_number"]
         extra_kwargs = {
             "pay_type": {"write_only": True},
@@ -157,6 +158,8 @@ class OrderModelSerializer(serializers.ModelSerializer):
                     redis = get_redis_connection("coupon")
                     redis.delete(f"{user_id}:{user_coupon_id}")
 
+                # 返回订单超时时间
+                order.order_timeout = constants.ORDER_TIMEOUT
                 return order
             except Exception as e:
                 # 1. 记录日志
