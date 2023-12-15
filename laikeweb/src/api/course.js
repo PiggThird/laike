@@ -29,6 +29,39 @@ const course = reactive({
     current_course_type: -1,    // 我的课程-当前显示的课程类型，默认为-1，表示全部
     user_course_count: 0,       // 我的课程-课程列表总数
     user_course_list:[],        // 用户中心的课程列表
+    lesson_list: [
+    // {
+    //     id: 1,
+    //     label: '1. 概述',
+    //     children: [
+    //         {id: 4, label: '1.1 基础环境'},
+    //     ]
+    // }, {
+    //     id: 2,
+    //     label: '2. 快速入门',
+    //     children: [
+    //         {id: 5, label: '2.1 基本使用步骤'},
+    //         {id: 6, label: '2.2 常用写法'}
+    //     ]
+    // }, {
+    //     id: 3,
+    //     label: '3. 路由基础',
+    //     children: [
+    //         {id: 7, label: '3.1 路由基本概念'},
+    //         {id: 8, label: '3.2 普通路由'}
+    //     ]
+    // }
+    ],
+    lesson_tree_props: {
+        children: 'children',
+        label: 'label',
+    },
+    user_course: {},            // 用户在当前课程的学习进度记录
+    current_chapter: null,      // 正在学习的章节ID
+    current_lesson: null,       // 正在学习的课时ID
+    lesson_link: null,          // 正在学习的课时视频ID
+    player: null,               // 当前页面的视频播放器对象
+    current_time: 0,            // 播放器，当前播放时间
     get_course_direction() {
         // 获取学习方向信息
         return http.get("/courses/directions/")
@@ -106,6 +139,36 @@ const course = reactive({
             }
         })
     },
+    get_user_course(token){
+        // 获取用户的指定课程信息包含学习进度
+        return http.get(`/users/course/${this.course_id}`,{
+            headers:{
+                Authorization: "jwt " + token,
+            }
+        })
+    },
+    get_lesson_study_time(lesson, token){
+        // 获取课程课时学习进度时间
+        return http.get("/users/lesson/", {
+            params:{
+                lesson,
+            },
+            headers:{
+                Authorization: "jwt " + token,
+            }
+        })
+    },
+    update_user_study_progress(lesson, seed, token) {
+        // 更新课时学习的进度
+        return http.post('/users/progress/', {
+            time: seed,
+            lesson: lesson,
+        },{
+            headers: {
+                Authorization: "jwt " + token,
+            }
+        })
+    }
 })
 
 export default course;

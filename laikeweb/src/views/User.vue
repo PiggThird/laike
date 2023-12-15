@@ -7,14 +7,14 @@
             <div class="user-pic-bg"><img class="img" :src="store.state.user.avatar" alt=""></div>
         </div>
         <div class="user-info-right">
-          <h3 class="user-name clearfix"><span>墨落</span></h3>
+          <h3 class="user-name clearfix"><span>佬三</span></h3>
           <p class="about-info">
             <span>男</span>
-            <span>CG影视动画师</span>
+            <span>初级程序猿</span>
           </p>
         </div>
         <div class="user-sign hide">
-          <p class="user-desc">这位同学很懒，木有签名的说～</p>
+          <p class="user-desc">好好学习，天天向上！</p>
         </div>
         <div class="study-info clearfix">
           <div class="item follows">

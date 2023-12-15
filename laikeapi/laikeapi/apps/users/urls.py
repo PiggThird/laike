@@ -14,4 +14,7 @@ urlpatterns = [
     path('register/', views.UserRegAPIView.as_view()),
     re_path(r"^sms/(?P<mobile>1[3-9]\d{9})/$", views.SendSmSView.as_view()),
     path("course/", views.CourseListAPIView.as_view()),
+    re_path("^course/(?P<course_id>\d+)/$", views.UserCourseAPIView.as_view()),
+    path("lesson/", views.StudyLessonAPIView.as_view()),
+    path("progress/", views.StudyProgressAPIView.as_view()),
 ]

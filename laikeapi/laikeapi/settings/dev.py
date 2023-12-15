@@ -466,3 +466,12 @@ ALIPAY = {
     "return_url": "http://www.laikecity.cn:8080/alipay",                                # 同步回调结果通知地址
     "notify_url": "http://api.laikecity.cn:8000/payments/alipay/notify",                # 异步回调结果通知地址
 }
+
+# 保利威视频加密服务
+POLYV = {
+    "userId": "a14bc8dec3",
+    "writeToken": "987aeafc-e42c-4723-824b-f02aecc7194e",
+    "readToken": "2573af0b-b2d5-4ab9-bd26-cef7ff7f2e5d",
+    "secretkey": "YjRVsiHRxV",
+    "tokenUrl": "https://hls.videocc.net/service/v1/token",
+}
