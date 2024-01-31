@@ -425,8 +425,8 @@ SIMPLEUI_INDEX = 'http://www.laikecity.cn:8080/'
 
 
 # 阿里云OSS云存储
-OSS_ACCESS_KEY_ID = "LTAI5tH1aq3HTKKBktNEPS4W"
-OSS_ACCESS_KEY_SECRET = "OUdmBCi9pFMVA8jF9k4D7B4EToqsLL"
+OSS_ACCESS_KEY_ID = ""
+OSS_ACCESS_KEY_SECRET = ""
 OSS_ENDPOINT = "oss-cn-beijing.aliyuncs.com"    # 访问域名, 根据服务器上的实际配置修改
 OSS_BUCKET_NAME = "laikecity"    # oss 创建的 BUCKET 名称
 
@@ -456,7 +456,7 @@ ALIPAY = {
     # 'gateway': 'https://openapi.alipay.com/gateway.do',   # 真实网关地址
     # 'gateway': 'https://openapi.alipaydev.com/gateway.do',  # 沙箱网关地址
     'gateway': 'https://openapi-sandbox.dl.alipaydev.com/gateway.do',  # 沙箱网关地址
-    'appid': '9021000131659004',                            # 支付应用ID
+    'appid': '',                            # 支付应用ID
     'sign_type': 'RSA2',                                    # 签证的加密算法
     'debug': True,                                          # 沙箱模式下必须设置为True
     'verbose': True,                                        # 是否在调试模式下输出调试数据
@@ -469,9 +469,9 @@ ALIPAY = {
 
 # 保利威视频加密服务
 POLYV = {
-    "userId": "a14bc8dec3",
-    "writeToken": "987aeafc-e42c-4723-824b-f02aecc7194e",
-    "readToken": "2573af0b-b2d5-4ab9-bd26-cef7ff7f2e5d",
-    "secretkey": "YjRVsiHRxV",
-    "tokenUrl": "https://hls.videocc.net/service/v1/token",
+    "userId": "",
+    "writeToken": "",
+    "readToken": "",
+    "secretkey": "",
+    "tokenUrl": "",
 }
