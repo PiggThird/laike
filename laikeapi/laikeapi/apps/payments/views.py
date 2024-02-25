@@ -122,7 +122,7 @@ class AlipayAPIViewSet(ViewSet):
                             user_course_list.append(UserCourse(course=course, user=order.user))
                         UserCourse.objects.bulk_create(user_course_list)
 
-                        # todo 4. 取消订单超时
+                        # 4. 取消订单超时
 
                     except Exception as e:
                         logger.error(f"订单支付处理同步结果发生未知错误：{e}")
@@ -200,7 +200,7 @@ class AlipayAPIViewSet(ViewSet):
                     user_course_list.append(UserCourse(course=course, user=order.user))
                 UserCourse.objects.bulk_create(user_course_list)
 
-                # todo 4. 取消订单超时
+                # 4. 取消订单超时
 
             except Exception as e:
                 logger.error(f"订单支付处理同步结果发生未知错误：{e}")
@@ -257,7 +257,7 @@ class AlipayAPIViewSet(ViewSet):
                             user_course_list.append(UserCourse(course=course, user=order.user))
                         UserCourse.objects.bulk_create(user_course_list)
 
-                        # todo 4. 取消订单超时
+                        # 4. 取消订单超时
 
                     except Exception as e:
                         logger.error(f"订单支付处理同步结果发生未知错误：{e}")

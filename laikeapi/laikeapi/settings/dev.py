@@ -408,10 +408,10 @@ CKEDITOR_CONFIGS = {
 
 # simpleUI-admin站点公共配置
 from django.contrib import admin
-admin.AdminSite.site_header = '来课学城后台管理'
-admin.AdminSite.site_title = '来课学城站点管理'
+admin.AdminSite.site_header = '数字媒体技术专业立体化资源建设平台后台管理'
+admin.AdminSite.site_title = '数字媒体技术专业立体化资源建设平台站点管理'
 # 登录界面logo
-SIMPLEUI_LOGO = '/uploads/logo.png'
+# SIMPLEUI_LOGO = '/uploads/logo.png'
 # 快速操作
 SIMPLEUI_HOME_QUICK = True
 # 服务器信息

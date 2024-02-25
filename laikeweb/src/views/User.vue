@@ -18,17 +18,17 @@
         </div>
         <div class="study-info clearfix">
           <div class="item follows">
-            <div class="u-info-learn" title="学习时长16分" style="cursor:pointer;">
-              <em>0.28h</em>
+            <div class="u-info-learn" title="学习时长39分" style="cursor:pointer;">
+              <em>239h</em>
               <span>学习时长 </span>
             </div>
           </div>
           <div class="item follows">
-            <router-link to="/u/index/credit"><em>0</em></router-link>
+            <router-link to="/u/index/credit"><em>100</em></router-link>
             <span>积分</span>
           </div>
           <div class="item follows">
-            <router-link to="/u/index/follows"><em>12</em></router-link>
+            <router-link to="/u/index/follows"><em>8</em></router-link>
             <span>关注</span>
           </div>
           <div class="item follows">

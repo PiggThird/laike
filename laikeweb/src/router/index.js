@@ -5,7 +5,7 @@ import store from "@/store";
 const routes = [
     {
         meta: {
-            title: "Laike-站点首页",
+            title: "数字媒体技术专业立体化资源建设平台-站点首页",
             keepAlive: true
         },
         path: '/',         // uri访问地址
@@ -14,7 +14,7 @@ const routes = [
     },
     {
         meta: {
-            title: "Laike-用户登录",
+            title: "数字媒体技术专业立体化资源建设平台-用户登录",
             keepAlive: true
         },
         path: '/login',      // uri访问地址
@@ -23,7 +23,7 @@ const routes = [
     },
     {
         meta: {
-            title: "Laike-注册",
+            title: "数字媒体技术专业立体化资源建设平台-注册",
             keepAlive: true,
         },
         path: '/register',
@@ -32,7 +32,7 @@ const routes = [
     },
     {
         meta: {
-            title: "Laike-个人中心",
+            title: "数字媒体技术专业立体化资源建设平台-个人中心",
             keepAlive: true,
             authorization: true,
         },
@@ -42,7 +42,7 @@ const routes = [
         children:[
                     {
                   meta:{
-                    title: "Laike-个人信息",
+                    title: "数字媒体技术专业立体化资源建设平台-个人信息",
                     keepAlive: true,
                     authorization: true,
                   },
@@ -52,7 +52,7 @@ const routes = [
                 },
                 {
                   meta:{
-                    title: "Laike-我的课程",
+                    title: "数字媒体技术专业立体化资源建设平台-我的课程",
                     keepAlive: true
                   },
                   path: 'course',
@@ -61,7 +61,7 @@ const routes = [
                 },
                 {
                   meta:{
-                    title: "Laike--我的订单",
+                    title: "数字媒体技术专业立体化资源建设平台--我的订单",
                     keepAlive: true,
                     authorization: true,
                   },
@@ -73,7 +73,7 @@ const routes = [
     },
     {
         meta: {
-            title: "Laike-课程信息",
+            title: "数字媒体技术专业立体化资源建设平台-课程信息",
             keepAlive: true,
         },
         path: '/project',
@@ -82,7 +82,7 @@ const routes = [
     },
     {
         meta: {
-            title: "Laike-课程详情",
+            title: "数字媒体技术专业立体化资源建设平台-课程详情",
             keepAlive: true
         },
         path: '/project/:id',     // :id vue的路径参数，代表了课程的ID
@@ -91,7 +91,7 @@ const routes = [
     },
     {
         meta: {
-            title: "Laike-购物车",
+            title: "数字媒体技术专业立体化资源建设平台-购物车",
             keepAlive: true
         },
         path: '/cart',
@@ -118,7 +118,7 @@ const routes = [
     },
     {
         meta:{
-          title: "Laike-学习中心",
+          title: "数字媒体技术专业立体化资源建设平台-学习中心",
           keepAlive: true,
           authorization: true
         },

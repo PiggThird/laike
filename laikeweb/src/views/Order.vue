@@ -112,11 +112,11 @@
         <div class="pay-type">
           <p class="title">选择支付方式</p>
           <div class="list">
-            <img :src="order.pay_type==0?'../assets/alipay2.png':'../assets/alipay1.png'" @click="order.pay_type=0"
+            <img :src="order.pay_type==0?'https://laikecity.oss-cn-beijing.aliyuncs.com/uploads/payments/alipay2.png':'https://laikecity.oss-cn-beijing.aliyuncs.com/uploads/payments/alipay1.png'" @click="order.pay_type=0"
                  alt="支付宝">
-            <img :src="order.pay_type==1?'../assets/wechat2.png':'../assets/wechat1.png'" @click="order.pay_type=1"
+            <img :src="order.pay_type==1?'https://laikecity.oss-cn-beijing.aliyuncs.com/uploads/payments/wechat2.png':'https://laikecity.oss-cn-beijing.aliyuncs.com/uploads/payments/wechat1.png'" @click="order.pay_type=1"
                  alt="微信">
-            <img :src="order.pay_type==2?'../assets/yue2.png':'../assets/yue1.png'" @click="order.pay_type=2"
+            <img :src="order.pay_type==2?'https://laikecity.oss-cn-beijing.aliyuncs.com/uploads/payments/yue2.png':'https://laikecity.oss-cn-beijing.aliyuncs.com/uploads/payments/yue1.png'" @click="order.pay_type=2"
                  alt="余额">
           </div>
         </div>

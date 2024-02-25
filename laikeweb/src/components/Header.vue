@@ -29,7 +29,7 @@
             </el-badge>
           </div>
           <div class="login-box ">
-            <router-link to="">我的课堂</router-link>
+            <router-link to="/user/course">我的课堂</router-link>
             <el-dropdown>
                 <span class="el-dropdown-link">
                   <el-avatar class="avatar" size="50" :src="store.state.user.avatar"></el-avatar>
@@ -427,6 +427,7 @@ const logout = () => {
 .header .logined-bar .shop-cart {
   height: 32px;
   line-height: 32px;
+  display: none;
 }
 
 .logined-bar .login-box {
