@@ -3,7 +3,8 @@
     <div class="header">
       <div class="content">
         <div class="logo">
-          <router-link to="/"><img src="../assets/logo.svg" alt=""></router-link>
+<!--          <router-link to="/"><img src="../assets/logo.svg" alt=""></router-link>-->
+          <router-link to="/"><img src="../assets/shumei.png" alt=""></router-link>
         </div>
         <ul class="nav">
           <li v-for="nav in nav.header_nav_list">

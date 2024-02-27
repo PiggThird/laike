@@ -41,8 +41,6 @@
                 <p class="title"><span class="text">前端工程师2021</span> <span class="tag tixi">体系</span></p>
               </div>
               <div class="bottom">
-                <span class="discount-name">优惠价</span>
-                <span class="price">￥4599.00</span> &middot;
                 <span class="difficulty"> 零基础 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 19322</span>
               </div>
@@ -59,7 +57,6 @@
                     class="tag shizhan">实战</span></p>
               </div>
               <div class="bottom">
-                <span class="price">399.00</span> &middot;
                 <span class="difficulty"> 中级 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 2946</span>
               </div>
@@ -78,8 +75,6 @@
                     class="tag shizhan">实战</span></p>
               </div>
               <div class="bottom">
-                <span class="discount-name">限时优惠</span>
-                <span class="price">￥328.00</span> &middot;
                 <span class="difficulty"> 高级 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 109</span>
               </div>
@@ -139,8 +134,6 @@
                 <p class="title"><span class="text">Java工程师2021</span> <span class="tag tixi">体系</span></p>
               </div>
               <div class="bottom">
-                <span class="discount-name">优惠价</span>
-                <span class="price">￥4399.00</span> &middot;
                 <span class="difficulty"> 零基础 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 15052</span>
               </div>
@@ -156,8 +149,6 @@
                 <p class="title"><span class="text">Python工程师（全能型）</span> <span class="tag tixi">体系</span></p>
               </div>
               <div class="bottom">
-                <span class="discount-name">优惠价</span>
-                <span class="price">￥4366.00</span> &middot;
                 <span class="difficulty"> 零基础 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 10786</span>
               </div>
@@ -173,8 +164,6 @@
                 <p class="title"><span class="text">Java全栈工程师</span> <span class="tag tixi">体系</span></p>
               </div>
               <div class="bottom">
-                <span class="discount-name">优惠价</span>
-                <span class="price">￥3380.00</span> &middot;
                 <span class="difficulty"> 进阶 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 1853</span>
               </div>
@@ -236,8 +225,6 @@
                 <p class="title"><span class="text">移动端架构师成长体系课</span> <span class="tag tixi">体系</span></p>
               </div>
               <div class="bottom">
-                <span class="discount-name">优惠价</span>
-                <span class="price">￥4888.00</span> &middot;
                 <span class="difficulty"> 进阶 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 402</span>
               </div>
@@ -256,7 +243,6 @@
                     class="tag shizhan">实战</span></p>
               </div>
               <div class="bottom">
-                <span class="price">368.00</span> &middot;
                 <span class="difficulty"> 高级 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 646</span>
               </div>
@@ -274,7 +260,294 @@
                   <span class="tag shizhan">实战</span></p>
               </div>
               <div class="bottom">
-                <span class="price">288.00</span> &middot;
+                <span class="difficulty"> 入门 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 1303</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="" class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/604f2b52090de67603240324-140-140.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">Android工程师高薪面试突破路线</span> <span
+                    class="tag lujing">路线</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty">3步骤</span> &middot;
+                <span class="difficulty">3门课</span> &middot;
+                <span class="num">1471人收藏</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="submenu" v-if="state.current_menu===3">
+        <div class="inner-box">
+          <h2 class="type">游戏开发</h2>
+          <div class="tag clearfix">
+          </div>
+          <div class="lore">
+            <span class="title">知识点：</span>
+            <p class="lores clearfix">
+              <a target="_blank" href="">Java</a>
+              <a target="_blank" href="">SpringBoot</a>
+              <a target="_blank" href="">Spring Cloud</a>
+              <a target="_blank" href="">SSM</a>
+              <a target="_blank" href="">PHP</a>
+              <a target="_blank" href="">.net</a>
+              <a target="_blank" href="">Python</a>
+              <a target="_blank" href="">爬虫</a>
+              <a target="_blank" href="">Django</a>
+              <a target="_blank" href="">Flask</a>
+              <a target="_blank" href="">Tornado</a>
+              <a target="_blank" href="">Go</a>
+              <a target="_blank" href="">C</a>
+              <a target="_blank" href="">C++</a>
+              <a target="_blank" href="">C#</a>
+              <a target="_blank" href="">Ruby</a></p>
+          </div>
+        </div>
+        <div class="recomment clearfix">
+          <a href="" target="_blank" title="移动端架构师成长体系课" class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/5ec5ddf209cd2c8606000338.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">移动端架构师成长体系课</span> <span class="tag tixi">体系</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 进阶 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 402</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="Flutter高级进阶实战  仿哔哩哔哩APP 一次性深度掌握Flutter高阶技能"
+             class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/60497caf0971842912000676-360-202.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span
+                    class="text">Flutter高级进阶实战 仿哔哩哔哩APP 一次性深度掌握Flutter高阶技能</span> <span
+                    class="tag shizhan">实战</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 高级 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 646</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="音视频基础+ffmpeg原理+项目实战 一课完成音视频技术开发入门"
+             class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/5e5621d0092c054612000676-360-202.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">音视频基础+ffmpeg原理+项目实战 一课完成音视频技术开发入门</span>
+                  <span class="tag shizhan">实战</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 入门 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 1303</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="" class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/604f2b52090de67603240324-140-140.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">Android工程师高薪面试突破路线</span> <span
+                    class="tag lujing">路线</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty">3步骤</span> &middot;
+                <span class="difficulty">3门课</span> &middot;
+                <span class="num">1471人收藏</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="submenu" v-if="state.current_menu===4">
+        <div class="inner-box">
+          <h2 class="type">影视剪辑</h2>
+          <div class="tag clearfix">
+          </div>
+          <div class="lore">
+            <span class="title">知识点：</span>
+            <p class="lores clearfix">
+              <a target="_blank" href="">Java</a>
+              <a target="_blank" href="">SpringBoot</a>
+              <a target="_blank" href="">Spring Cloud</a>
+              <a target="_blank" href="">SSM</a>
+              <a target="_blank" href="">PHP</a>
+              <a target="_blank" href="">.net</a>
+              <a target="_blank" href="">Python</a>
+              <a target="_blank" href="">爬虫</a>
+              <a target="_blank" href="">Django</a>
+              <a target="_blank" href="">Flask</a>
+              <a target="_blank" href="">Tornado</a>
+              <a target="_blank" href="">Go</a>
+              <a target="_blank" href="">C</a>
+              <a target="_blank" href="">C++</a>
+              <a target="_blank" href="">C#</a>
+              <a target="_blank" href="">Ruby</a></p>
+          </div>
+        </div>
+        <div class="recomment clearfix">
+          <a href="" target="_blank" title="移动端架构师成长体系课" class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/5ec5ddf209cd2c8606000338.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">移动端架构师成长体系课</span> <span class="tag tixi">体系</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 进阶 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 402</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="Flutter高级进阶实战  仿哔哩哔哩APP 一次性深度掌握Flutter高阶技能"
+             class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/60497caf0971842912000676-360-202.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span
+                    class="text">Flutter高级进阶实战 仿哔哩哔哩APP 一次性深度掌握Flutter高阶技能</span> <span
+                    class="tag shizhan">实战</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 高级 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 646</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="音视频基础+ffmpeg原理+项目实战 一课完成音视频技术开发入门"
+             class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/5e5621d0092c054612000676-360-202.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">音视频基础+ffmpeg原理+项目实战 一课完成音视频技术开发入门</span>
+                  <span class="tag shizhan">实战</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 入门 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 1303</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="" class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/604f2b52090de67603240324-140-140.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">Android工程师高薪面试突破路线</span> <span
+                    class="tag lujing">路线</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty">3步骤</span> &middot;
+                <span class="difficulty">3门课</span> &middot;
+                <span class="num">1471人收藏</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="submenu" v-if="state.current_menu===5">
+        <div class="inner-box">
+          <h2 class="type">摄影摄像技术</h2>
+          <div class="tag clearfix">
+          </div>
+          <div class="lore">
+            <span class="title">知识点：</span>
+            <p class="lores clearfix">
+              <a target="_blank" href="">Java</a>
+              <a target="_blank" href="">SpringBoot</a>
+              <a target="_blank" href="">Spring Cloud</a>
+              <a target="_blank" href="">SSM</a>
+              <a target="_blank" href="">PHP</a>
+              <a target="_blank" href="">.net</a>
+              <a target="_blank" href="">Python</a>
+              <a target="_blank" href="">爬虫</a>
+              <a target="_blank" href="">Django</a>
+              <a target="_blank" href="">Flask</a>
+              <a target="_blank" href="">Tornado</a>
+              <a target="_blank" href="">Go</a>
+              <a target="_blank" href="">C</a>
+              <a target="_blank" href="">C++</a>
+              <a target="_blank" href="">C#</a>
+              <a target="_blank" href="">Ruby</a></p>
+          </div>
+        </div>
+        <div class="recomment clearfix">
+          <a href="" target="_blank" title="移动端架构师成长体系课" class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/5ec5ddf209cd2c8606000338.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">移动端架构师成长体系课</span> <span class="tag tixi">体系</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 进阶 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 402</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="Flutter高级进阶实战  仿哔哩哔哩APP 一次性深度掌握Flutter高阶技能"
+             class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/60497caf0971842912000676-360-202.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span
+                    class="text">Flutter高级进阶实战 仿哔哩哔哩APP 一次性深度掌握Flutter高阶技能</span> <span
+                    class="tag shizhan">实战</span></p>
+              </div>
+              <div class="bottom">
+                <span class="difficulty"> 高级 </span> &middot;
+                <span class="num"><i class="imv2-set-sns"></i> 646</span>
+              </div>
+            </div>
+          </a>
+          <a href="" target="_blank" title="音视频基础+ffmpeg原理+项目实战 一课完成音视频技术开发入门"
+             class="recomment-item">
+            <div class="img" style="background-size: 100%; ">
+              <img src="../assets/5e5621d0092c054612000676-360-202.png" alt="">
+            </div>
+            <div class="details">
+              <!--路径单独写-->
+              <div class="title-box">
+                <p class="title"><span class="text">音视频基础+ffmpeg原理+项目实战 一课完成音视频技术开发入门</span>
+                  <span class="tag shizhan">实战</span></p>
+              </div>
+              <div class="bottom">
                 <span class="difficulty"> 入门 </span> &middot;
                 <span class="num"><i class="imv2-set-sns"></i> 1303</span>
               </div>
@@ -313,6 +586,21 @@
         <div class="item" :class="{'js-menu-item-on': state.current_menu==2}" @mouseover="state.current_menu=2">
           <span class="title">移动开发：</span>
           <span class="sub-title">Flutter / Android / iOS </span>
+          <i class="imv2-arrow1_r"></i>
+        </div>
+        <div class="item" :class="{'js-menu-item-on': state.current_menu==3}" @mouseover="state.current_menu=3">
+          <span class="title">游戏开发：</span>
+          <span class="sub-title">游戏开发1 / 游戏开发2 / 游戏开发3 </span>
+          <i class="imv2-arrow1_r"></i>
+        </div>
+        <div class="item" :class="{'js-menu-item-on': state.current_menu==4}" @mouseover="state.current_menu=4">
+          <span class="title">影视剪辑：</span>
+          <span class="sub-title">影视剪辑1 / 影视剪辑2 / 影视剪辑3 </span>
+          <i class="imv2-arrow1_r"></i>
+        </div>
+        <div class="item" :class="{'js-menu-item-on': state.current_menu==5}" @mouseover="state.current_menu=5">
+          <span class="title">摄影摄像技术：</span>
+          <span class="sub-title">摄像技术1 / 摄像技术2 / 摄像技术3 </span>
           <i class="imv2-arrow1_r"></i>
         </div>
       </div>
@@ -871,11 +1159,11 @@ const state = reactive({
 }
 
 .menuContent .item {
-  line-height: 50px;
+  /*line-height: 50px;*/
   cursor: pointer;
   position: relative;
   color: #fff;
-  padding: 0 14px;
+  padding: 14px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   height: 50px;

@@ -25,6 +25,8 @@ nav.get_footer_nav().then(response => {
   height: 128px;
   color: #545C63;
   background: #25292e;
+  position: absolute;
+  bottom: 0;
 }
 
 .footer ul {
