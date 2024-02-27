@@ -425,8 +425,8 @@ SIMPLEUI_INDEX = 'http://www.laikecity.cn:8080/'
 
 
 # 阿里云OSS云存储
-OSS_ACCESS_KEY_ID = "LTAI5tH1aq3HTKKBktNEPS4W"
-OSS_ACCESS_KEY_SECRET = "OUdmBCi9pFMVA8jF9k4D7B4EToqsLL"
+OSS_ACCESS_KEY_ID = ""
+OSS_ACCESS_KEY_SECRET = ""
 OSS_ENDPOINT = "oss-cn-beijing.aliyuncs.com"    # 访问域名, 根据服务器上的实际配置修改
 OSS_BUCKET_NAME = "laikecity"    # oss 创建的 BUCKET 名称
 
